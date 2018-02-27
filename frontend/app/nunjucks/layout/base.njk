@@ -28,10 +28,9 @@
     <!-- Header -->
     {% include "app/nunjucks/layout/_partials/header.njk" %}
     <!-- End Header -->
-
-
-    {% block content %}{% endblock %}
-
+    <div class="g-min-height-50vh">
+        {% block content %}{% endblock %}
+    </div>
 
     <!-- Footer -->
     {% include "app/nunjucks/layout/_partials/footer.njk" %}

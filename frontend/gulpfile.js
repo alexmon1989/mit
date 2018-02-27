@@ -154,7 +154,8 @@ gulp.task('nunjucks', function () {
         .pipe(htmlbeautify({
             indent_size : 4 // размер отступа - 4 пробела
         }))
-        .pipe(gulp.dest('./app'));
+        .pipe(gulp.dest('./app'))
+        .pipe(browserSync.reload({stream: true}));
 });
 
 //
@@ -224,7 +225,7 @@ gulp.task('watch', ['set-dev-node-env', 'css', 'js', 'nunjucks', 'browser-sync']
         './app/js/custom.js',
         './app/js/main.js',
     ], ['js']);
-    gulp.watch('./app/nunjucks/**/*.njk', browserSync.reload);
+    gulp.watch('./app/nunjucks/**/*.njk', ['nunjucks']);
 });
 
 //
