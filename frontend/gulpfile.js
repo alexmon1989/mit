@@ -108,6 +108,7 @@ gulp.task('js', ['vueify', 'custom-js'], function () {
         './app/js/components/hs.go-to.js',
         './app/js/components/hs.dropdown.js',
         './app/js/bundle.min.js',
+        './app/js/placemark.js',
         './app/js/custom.min.js', // Всегда в конце
     ])
         .pipe(concat('scripts.min.js'))
@@ -224,6 +225,7 @@ gulp.task('watch', ['set-dev-node-env', 'css', 'js', 'nunjucks', 'browser-sync']
         './app/js/vue-components/**/*.vue',
         './app/js/custom.js',
         './app/js/main.js',
+        './app/js/placemark.js'
     ], ['js']);
     gulp.watch('./app/nunjucks/**/*.njk', ['nunjucks']);
 });

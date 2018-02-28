@@ -1,7 +1,12 @@
 /* Add here all your css styles (customizations) */
-
 // Variables
 @import "custom.variables";
-
 // Mixins
 @import "custom.mixins";
+
+#map {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
