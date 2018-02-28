@@ -1,0 +1,25 @@
+{% set title = "Главная страница" %}
+{% extends "app/nunjucks/layout/base.njk" %}
+
+{% block content %}
+    <!-- Promo Block -->
+    {% include "app/nunjucks/pages/home/_partials/promo.njk" %}
+    <!-- End Promo Block -->
+
+    <!-- Icon Blocks -->
+    {% include "app/nunjucks/pages/home/_partials/icons.njk" %}
+    <!-- About Block -->
+    {% include "app/nunjucks/pages/home/_partials/about.njk" %}
+    <!-- End About Block -->
+
+    <!-- Map Block -->
+    {% include "app/nunjucks/pages/home/_partials/map.njk" %}
+    <!-- End Map Block -->
+
+    <hr class="g-brd-gray-light-v4 my-0">
+
+
+    <!-- Last News Block -->
+    {% include "app/nunjucks/pages/home/_partials/news.njk" %}
+    <!-- End Last News Block -->
+{% endblock %}

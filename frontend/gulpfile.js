@@ -149,7 +149,7 @@ gulp.task('browser-sync', function () {
 //
 
 gulp.task('nunjucks', function () {
-    return gulp.src('./app/nunjucks/index.njk')
+    return gulp.src('./app/nunjucks/pages/home/index.njk')
         .pipe(njkRender())
         .pipe(htmlbeautify({
             indent_size : 4 // размер отступа - 4 пробела
