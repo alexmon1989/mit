@@ -22,27 +22,27 @@
                 <div class="collapse navbar-collapse align-items-center flex-sm-row g-pt-10 g-pt-5--lg g-mr-40--lg" id="navBar">
                     <ul class="navbar-nav text-uppercase g-pos-rel g-font-weight-600 ml-auto">
 
-                        <li class="nav-item  g-mx-10--lg g-mx-15--xl active">
+                        <li class="nav-item g-mx-10--lg g-mx-15--xl {% if active_menu == "home" %}active{% endif %}">
                             <a href="/" class="nav-link g-py-7 g-px-0">Главная</a>
                         </li>
 
-                        <li class="nav-item  g-mx-10--lg g-mx-15--xl">
-                            <a href="/" class="nav-link g-py-7 g-px-0">Новости</a>
+                        <li class="nav-item g-mx-10--lg g-mx-15--xl {% if active_menu == "news_list" %}active{% endif %}">
+                            <a href="news_list.html" class="nav-link g-py-7 g-px-0">Новости</a>
                         </li>
 
-                        <li class="nav-item  g-mx-10--lg g-mx-15--xl">
+                        <li class="nav-item g-mx-10--lg g-mx-15--xl">
                             <a href="/" class="nav-link g-py-7 g-px-0">О нас</a>
                         </li>
 
-                        <li class="nav-item  g-mx-10--lg g-mx-15--xl">
+                        <li class="nav-item g-mx-10--lg g-mx-15--xl">
                             <a href="/" class="nav-link g-py-7 g-px-0">Спектакль "В гостях у Ивана"</a>
                         </li>
 
-                        <li class="nav-item  g-mx-10--lg g-mx-15--xl">
+                        <li class="nav-item g-mx-10--lg g-mx-15--xl">
                             <a href="/" class="nav-link g-py-7 g-px-0">Календарь</a>
                         </li>
 
-                        <li class="nav-item  g-mx-10--lg g-mx-15--xl">
+                        <li class="nav-item g-mx-10--lg g-mx-15--xl">
                             <a href="/" class="nav-link g-py-7 g-px-0">Контакты</a>
                         </li>
                     </ul>

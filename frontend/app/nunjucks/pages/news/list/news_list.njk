@@ -1,0 +1,14 @@
+{% set title = "Список новостей" %}
+{% set active_menu = "news_list" %}
+
+{% extends "app/nunjucks/layout/base.njk" %}
+
+{% block content %}
+    <!-- Promo Block -->
+    {% include "app/nunjucks/pages/news/list/_partials/breadcrumbs.njk" %}
+    <!-- End Promo Block -->
+
+    <!-- List News Block -->
+    {% include "app/nunjucks/pages/news/list/_partials/news_list.njk" %}
+    <!-- End List News Block -->
+{% endblock %}

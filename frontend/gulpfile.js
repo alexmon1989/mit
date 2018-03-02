@@ -100,6 +100,8 @@ gulp.task('js', ['vueify', 'custom-js'], function () {
         './app/vendor/dzsparallaxer/advancedscroller/plugin.js',
         './app/vendor/fancybox/jquery.fancybox.min.js',
         './app/vendor/slick-carousel/slick/slick.js',
+        './app/vendor/imagesloaded/imagesloaded.pkgd.min.js',
+        './app/vendor/masonry/dist/masonry.pkgd.min.js',
         './app/js/hs.core.js',
         './app/js/components/hs.header.js',
         './app/js/helpers/hs.hamburgers.js',
@@ -149,7 +151,10 @@ gulp.task('browser-sync', function () {
 //
 
 gulp.task('nunjucks', function () {
-    return gulp.src('./app/nunjucks/pages/home/index.njk')
+    return gulp.src([
+        './app/nunjucks/pages/home/index.njk',
+        './app/nunjucks/pages/news/list/news_list.njk',
+    ])
         .pipe(njkRender())
         .pipe(htmlbeautify({
             indent_size : 4 // размер отступа - 4 пробела
