@@ -108,7 +108,6 @@ gulp.task('js', ['vueify', 'custom-js'], function () {
         './app/js/components/hs.go-to.js',
         './app/js/components/hs.dropdown.js',
         './app/js/bundle.min.js',
-        './app/js/placemark.js',
         './app/js/custom.min.js', // Всегда в конце
     ])
         .pipe(concat('scripts.min.js'))

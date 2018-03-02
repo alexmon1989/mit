@@ -39,6 +39,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "vee-validate": "^2.0.4",
-    "vue": "^2.5.13"
+    "vue": "^2.5.13",
+    "vue-yandex-maps": "^0.7.8"
   }
 }

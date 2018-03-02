@@ -11,5 +11,40 @@
         </header>
     </div>
 
-    <div id="map" class="g-min-height-400"></div>
+    <div class="g-min-height-400">
+        <yandex-map
+                :coords="[44.62, 33.52]"
+                zoom="12"
+                style="width: 100%; height: 400px;"
+        >
+
+            <ymap-marker
+                    marker-type="placemark"
+                    :coords="[44.61410128, 33.52392752]"
+                    hint-content="СОШ №265"
+                    :balloon="{header: 'СОШ №265', body: '<strong>Дата и время:</strong> 20 марта 2018 года в 18:00 <br><strong>Мест осталось:</strong> 20/25 <br><a href=#>Перейти на страницу мероприятия</a>'}"
+                    :options="{iconColor: '#735184', preset: 'islands#greenDotIconWithCaption'}"
+                    cluster-name="1"
+            ></ymap-marker>
+
+            <ymap-marker
+                    marker-type="placemark"
+                    :coords="[44.60420179, 33.51472217]"
+                    hint-content="СОШ №265"
+                    :balloon="{header: 'СОШ №265', body: '<strong>Дата и время:</strong> 20 марта 2018 года в 18:00 <br><strong>Мест осталось:</strong> 20/25 <br><a href=#>Перейти на страницу мероприятия</a>'}"
+                    :options="{iconColor: '#56844a', preset: 'islands#greenDotIconWithCaption'}"
+                    cluster-name="1"
+            ></ymap-marker>
+
+            <ymap-marker
+                    marker-type="placemark"
+                    :coords="[44.59085137, 33.53995977]"
+                    hint-content="СОШ №265"
+                    :balloon="{header: 'СОШ №265', body: '<strong>Дата и время:</strong> 20 марта 2018 года в 18:00 <br><strong>Мест осталось:</strong> 20/25 <br><a href=#>Перейти на страницу мероприятия</a>'}"
+                    :options="{iconColor: '#295e84', preset: 'islands#greenDotIconWithCaption'}"
+                    cluster-name="1"
+            ></ymap-marker>
+
+        </yandex-map>
+    </div>
 </section>
