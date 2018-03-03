@@ -156,6 +156,7 @@ gulp.task('nunjucks', function () {
         './app/nunjucks/pages/news/list/news_list.njk',
         './app/nunjucks/pages/news/detail/news_detail.njk',
         './app/nunjucks/pages/about/about.njk',
+        './app/nunjucks/pages/contacts/contacts.njk',
     ])
         .pipe(njkRender())
         .pipe(htmlbeautify({
