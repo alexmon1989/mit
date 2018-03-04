@@ -1,0 +1,49 @@
+{% set title = "В гостях у Ивана" %}
+{% set active_menu = "play" %}
+
+{% extends "app/nunjucks/layout/base.njk" %}
+
+{% block content %}
+    <!-- Breadcrumbs Block -->
+    {% include "app/nunjucks/pages/play/_partials/breadcrumbs.njk" %}
+    <!-- End Breadcrumbs Block -->
+
+    <section class="g-py-100 container">
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <!-- Main Photo Block -->
+                {% include "app/nunjucks/pages/play/_partials/main_photo.njk" %}
+                <!-- End Main Photo Block -->
+            </div>
+            <div class="col-12 col-lg-6">
+                <!-- Main Photo Block -->
+                {% include "app/nunjucks/pages/play/_partials/properties.njk" %}
+                <!-- End Main Photo Block -->
+            </div>
+
+            <div class="col-12 g-pt-50">
+                <!-- Description Block -->
+                {% include "app/nunjucks/pages/play/_partials/description.njk" %}
+                <!-- End Description Block -->
+            </div>
+
+            <div class="col-12 g-pt-30">
+                <!-- Gallery Block -->
+                {% include "app/nunjucks/pages/play/_partials/gallery.njk" %}
+                <!-- End Gallery Block -->
+            </div>
+
+            <div class="col-12 g-pt-80">
+                <!-- Roles Block -->
+                {% include "app/nunjucks/pages/play/_partials/roles.njk" %}
+                <!-- End Roles Block -->
+            </div>
+
+            <div class="col-12 g-pt-30">
+                <!-- Dates Block -->
+                {% include "app/nunjucks/pages/play/_partials/dates.njk" %}
+                <!-- End Dates Block -->
+            </div>
+        </div>
+    </section>
+{% endblock %}
