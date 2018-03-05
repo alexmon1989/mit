@@ -1,0 +1,19 @@
+<div class="g-min-height-400">
+    <yandex-map
+            :coords="[44.62, 33.52]"
+            zoom="12"
+            style="width: 100%; height: 400px;"
+    >
+
+        <ymap-marker
+                marker-id="1"
+                marker-type="placemark"
+                :coords="[44.61410128, 33.52392752]"
+                hint-content="СОШ №265"
+                :balloon="{header: 'СОШ №265', body: '<strong>Дата и время:</strong> 20 марта 2018 года в 18:00 <br><strong>Адрес:</strong> ул. Пушкина, 1<br><strong>Мест осталось:</strong> 20/25 <br><a href=future_event.html>Перейти на страницу мероприятия</a>'}"
+                :options="{iconColor: '#735184', preset: 'islands#greenDotIconWithCaption'}"
+                cluster-name="1"
+        ></ymap-marker>
+
+    </yandex-map>
+</div>

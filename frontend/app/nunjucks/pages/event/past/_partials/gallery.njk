@@ -1,0 +1,32 @@
+<!-- Heading -->
+<header class="text-center g-width-60x--md mx-auto g-mb-30">
+    <div class="u-heading-v2-3--bottom g-brd-primary g-mb-20">
+        <h2 class="h4 u-heading-v2__title g-color-gray-dark-v2 g-font-weight-600 text-uppercase">Фото и видео с мероприятия</h2>
+    </div>
+</header>
+<!-- End Heading -->
+
+<div class="js-carousel text-center" data-infinite="true" data-center-mode="true" data-center-padding="60px" data-rows="2" data-slides-show="4" data-arrows-classes="u-arrow-v1 g-absolute-centered--y g-width-35 g-height-40 g-font-size-18 g-color-gray g-bg-white" data-arrow-left-classes="fa fa-angle-left g-left-0"
+     data-arrow-right-classes="fa fa-angle-right g-right-0" data-responsive='[{
+                   "breakpoint": 768,
+                   "settings": {
+                     "slidesToShow": 2,
+                     "slidesToScroll": 2,
+                     "centerPadding": 0
+                   }
+                 }]'>
+
+    {% set items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %}
+
+    {% for item in items %}
+        <div class="js-slide g-px-10">
+            <a class="js-fancybox d-block u-block-hover g-pos-rel" href="javascript:;" data-fancybox="lightbox-gallery--04" data-src="img/play/{{ item }}.jpg" data-speed="350" data-caption="Lightbox Gallery">
+                <img class="img-fluid u-block-hover__main--zoom-v1" src="img/play/{{ item }}.jpg" alt="Image Description">
+                <span class="u-icon-v3 u-icon-size--xs g-bg-white g-color-black g-rounded-50x g-cursor-pointer g-pos-abs g-bottom-10 g-right-10">
+                <i class="hs-icon hs-icon-magnifier"></i>
+            </span>
+            </a>
+        </div>
+    {% endfor %}
+
+</div>

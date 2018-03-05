@@ -1,0 +1,37 @@
+{% set title = "Прошедшее мероприятие" %}
+{% set active_menu = "calendar" %}
+
+{% extends "app/nunjucks/layout/base.njk" %}
+
+{% block content %}
+    <!-- Breadcrumbs Block -->
+    {% include "app/nunjucks/pages/event/past/_partials/breadcrumbs.njk" %}
+    <!-- End Breadcrumbs Block -->
+
+    <section class="g-pt-100 container">
+        <div class="row">
+            <div class="col-12 col-lg-7">
+                <!-- Map Block -->
+                {% include "app/nunjucks/pages/event/past/_partials/map.njk" %}
+                <!-- End Map Block -->
+            </div>
+            <div class="col-12 col-lg-5">
+                <!-- Properties Block -->
+                {% include "app/nunjucks/pages/event/past/_partials/properties.njk" %}
+                <!-- End Properties Block -->
+            </div>
+        </div>
+    </section>
+
+    <section class="container g-pt-80">
+        <!-- Gallery Block -->
+        {% include "app/nunjucks/pages/event/past/_partials/gallery.njk" %}
+        <!-- End Gallery Block -->
+    </section>
+
+    <section class="container g-pt-80 g-pb-100">
+        <!-- Comments Block -->
+        {% include "app/nunjucks/pages/event/past/_partials/comments.njk" %}
+        <!-- End Comments Block -->
+    </section>
+{% endblock %}
