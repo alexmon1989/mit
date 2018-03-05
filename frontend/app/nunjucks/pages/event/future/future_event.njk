@@ -1,0 +1,33 @@
+{% set title = "Будущее мероприятие" %}
+{% set active_menu = "calendar" %}
+
+{% extends "app/nunjucks/layout/base.njk" %}
+
+{% block content %}
+    <!-- Breadcrumbs Block -->
+    {% include "app/nunjucks/pages/event/future/_partials/breadcrumbs.njk" %}
+    <!-- End Breadcrumbs Block -->
+
+    <section class="g-pt-100 container">
+        <div class="row">
+            <div class="col-12 col-lg-7">
+                <!-- Map Block -->
+                {% include "app/nunjucks/pages/event/future/_partials/map.njk" %}
+                <!-- End Map Block -->
+            </div>
+            <div class="col-12 col-lg-5">
+                <!-- Properties Block -->
+                {% include "app/nunjucks/pages/event/future/_partials/properties.njk" %}
+                <!-- End Properties Block -->
+            </div>
+        </div>
+    </section>
+
+
+    <section class="container g-pt-80 g-py-100">
+        <!-- Form Block -->
+        {% include "app/nunjucks/pages/event/future/_partials/form.njk" %}
+        <!-- End Form Block -->
+    </section>
+
+{% endblock %}

@@ -9,12 +9,14 @@ Vue.use(VeeValidate, {
 });
 
 import ContactForm from './vue-components/ContactForm.vue';
+import EventRegistrationForm from './vue-components/EventRegistrationForm.vue';
 
 new Vue({
     el: '#app',
     components: {
         yandexMap,
         ymapMarker,
-        ContactForm: ContactForm
+        ContactForm: ContactForm,
+        EventRegistrationForm: EventRegistrationForm
     }
 });
