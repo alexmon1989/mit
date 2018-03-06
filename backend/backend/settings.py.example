@@ -25,7 +25,7 @@ SECRET_KEY = '5^b##ob$k35t*#do=s*&7f_3dw3uh!k5%0!s&bus8aqk)k)jp$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,9 +37,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
+    'ckeditor',
+    'ckeditor_uploader',
+    'easy_thumbnails',
+    'apps.theater.apps.TheaterConfig',
+    'apps.mit_calendar.apps.MitCalendarConfig',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -64,6 +71,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries': {
+                'project_tags': 'templatetags.common_extras',
+            },
         },
     },
 ]
@@ -185,4 +195,14 @@ CKEDITOR_CONFIGS = {
         ]),
         'allowedContent': True,
     }
+}
+
+THUMBNAIL_ALIASES = {
+    '': {
+        'play_lg': {'size': (900, 600), 'crop': False},
+        'play_md': {'size': (550, 370), 'crop': False},
+        'play_sm': {'size': (320, 180), 'crop': True},
+        'avatar': {'size': (400, 450), 'crop': True},
+        'avatar_sq': {'size': (400, 400), 'crop': True},
+    },
 }
