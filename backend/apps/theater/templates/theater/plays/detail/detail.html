@@ -1,0 +1,50 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}{% if play.meta_title %}{{ play.meta_title }}{% else %}{{ play.title }}{% endif %}{% endblock %}
+{% block keywords %}{{ play.meta_keywords|default_if_none:'' }}{% endblock %}
+{% block description %}{{ play.meta_description|default_if_none:'' }}{% endblock %}
+
+{% block content %}
+    <!-- Breadcrumbs Block -->
+    {% include "theater/plays/detail/_partials/breadcrumbs.html" %}
+    <!-- End Breadcrumbs Block -->
+
+    <section class="g-py-100 container">
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <!-- Main Photo Block -->
+                {% include "theater/plays/detail/_partials/main_photo.html" %}
+                <!-- End Main Photo Block -->
+            </div>
+            <div class="col-12 col-lg-6">
+                <!-- Main Photo Block -->
+                {% include "theater/plays/detail/_partials/properties.html" %}
+                <!-- End Main Photo Block -->
+            </div>
+
+            <div class="col-12 g-pt-50">
+                <!-- Description Block -->
+                {% include "theater/plays/detail/_partials/description.html" %}
+                <!-- End Description Block -->
+            </div>
+
+            <div class="col-12 g-pt-30">
+                <!-- Gallery Block -->
+                {% include "theater/plays/detail/_partials/gallery.html" %}
+                <!-- End Gallery Block -->
+            </div>
+
+            <div class="col-12 g-pt-80">
+                <!-- Roles Block -->
+                {% include "theater/plays/detail/_partials/roles.html" %}
+                <!-- End Roles Block -->
+            </div>
+
+            <div class="col-12 g-pt-50">
+                <!-- Dates Block -->
+                {% include "theater/plays/detail/_partials/dates.html" %}
+                <!-- End Dates Block -->
+            </div>
+        </div>
+    </section>
+{% endblock %}

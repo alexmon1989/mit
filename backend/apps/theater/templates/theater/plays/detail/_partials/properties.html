@@ -1,0 +1,12 @@
+{% load project_tags %}
+
+<span class="text-muted">{{ play.duration|duration }}</span>
+
+{% if play.get_properties %}
+    <dl class="row g-mt-30">
+        {% for property in play.get_properties %}
+            <dt class="col-sm-7 text-uppercase">{{ property.key }}</dt>
+            <dd class="col-sm-5">{{ property.value }}</dd>
+        {% endfor %}
+    </dl>
+{% endif %}

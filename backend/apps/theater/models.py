@@ -1,6 +1,25 @@
 from django.db import models
+from django.utils import timezone
 from ckeditor_uploader.fields import RichTextUploadingField
 from backend.abstract_models import TimeStampedModel, SeoModel
+
+
+class Position(TimeStampedModel):
+    """Модель должности."""
+    title = models.CharField('Название', max_length=255)
+    weight = models.PositiveIntegerField(
+        'Вес',
+        default=10000,
+        help_text='Чем выше вес, тем "выше" сотрудник с этой должностью на странице.'
+    )
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Должность'
+        verbose_name_plural = 'Должности'
+        ordering = ('title',)
 
 
 class Person(TimeStampedModel):
@@ -13,7 +32,7 @@ class Person(TimeStampedModel):
         blank=True,
         help_text='Оптимальный размер: 400px*450px.'
     )
-    position = models.CharField('Должность', max_length=255)
+    position = models.ForeignKey(Position, on_delete=models.CASCADE, verbose_name='Должность')
 
     def __str__(self):
         return self.name
@@ -47,6 +66,13 @@ class Play(SeoModel, TimeStampedModel):
     def __str__(self):
         return self.title
 
+    def get_first_photo(self):
+        """Возвращает первое фото спектакля или None."""
+        photos = self.get_photos()
+        if photos:
+            return photos.first()
+        return None
+
     def get_photos(self):
         """Возвращает список фотографий спектакля."""
         return self.playphoto_set.filter(is_visible=True).order_by('created_at').all()
@@ -54,6 +80,14 @@ class Play(SeoModel, TimeStampedModel):
     def get_videos(self):
         """Возвращает список видео спектакля."""
         return self.playvideo_set.filter(is_visible=True).order_by('created_at').all()
+
+    def get_properties(self):
+        """Возвращает список свойств спектакля."""
+        return self.playproperty_set.order_by('created_at').all()
+
+    def get_future_events(self):
+        """Возвращает список будущих событий со спектаклем."""
+        return self.event_set.filter(date__gte=timezone.now(), is_enabled=True).all()
 
     class Meta:
         verbose_name = 'Спектакль'
@@ -122,6 +156,10 @@ class PersonPlayRole(models.Model):
     person = models.ForeignKey(Person, verbose_name='Актёр', on_delete=models.CASCADE)
     play = models.ForeignKey(Play, verbose_name='Спектакль', on_delete=models.CASCADE)
     role = models.CharField('Роль', max_length=255)
+    text = models.CharField('Краткий текст', max_length=255, null=True, blank=True)
+
+    def __str__(self):
+        return 'Роль #{}'.format(self.pk)
 
     class Meta:
         verbose_name = 'Роль'
