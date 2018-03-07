@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'easy_thumbnails',
+    'colorful',
     'apps.theater.apps.TheaterConfig',
     'apps.mit_calendar.apps.MitCalendarConfig',
 ]

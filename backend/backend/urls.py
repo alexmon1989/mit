@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('v-gostyah-u-ivana/', include('apps.theater.urls')),
+    path('calendar/', include('apps.mit_calendar.urls')),
     re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]
 

@@ -1,0 +1,63 @@
+<section class="g-pt-50 g-pb-100 g-bg-secondary">
+    <div class="container">
+        <!-- Heading -->
+        <header class="text-center g-width-60x--md mx-auto g-mb-50">
+            <div class="u-heading-v2-3--bottom g-brd-primary g-mb-20">
+                <h2 class="h4 u-heading-v2__title g-color-gray-dark-v2 g-font-weight-600 text-uppercase">Прошедшие
+                    мероприятия</h2>
+            </div>
+            <p class="g-font-size-16">Также предлагаем вам посмотреть отчёты с наших прошедших мероприятий.</p>
+        </header>
+        <!-- End Heading -->
+
+    {% if past_events_count > 0 %}
+        <!--Basic Table-->
+        <div class="table-responsive">
+            <table class="table table-bordered u-table--v2">
+                <thead class="text-uppercase g-letter-spacing-1">
+                <tr>
+                    <th class="g-font-weight-600 g-color-black">Дата</th>
+                    <th class="g-font-weight-600 g-color-black">Время</th>
+                    <th class="g-font-weight-600 g-color-black">Место</th>
+                    <th class="g-font-weight-600 g-color-black">Адрес</th>
+                    <th class="g-font-weight-600 g-color-black"></th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for event in event_list %}
+                    {% if event.is_past_due %}
+                        <tr>
+                            <td class="align-middle" nowrap>
+                                <i class="fa fa-calendar g-mr-1"></i>
+                                <span>{{ event.date }}</span>
+                            </td>
+                            <td class="align-middle" nowrap>
+                                <i class="fa fa-clock-o g-mr-1"></i>
+                                <span>{{ event.time }}</span>
+                            </td>
+                            <td class="align-middle">{{ event.place }}</td>
+                            <td class="align-middle">
+                                <div class="d-flex">
+                                    <i class="fa fa-map-marker g-font-size-18 g-color-gray-dark-v5 g-pos-rel g-top-5 g-mr-7"></i>
+                                    <span>{{ event.address }}</span>
+                                </div>
+                            </td>
+                            <td class="align-middle">
+                                <a class="btn btn-block u-btn-blue g-rounded-50 g-py-5" href="past_event.html">
+                                    <i class="fa fa-eye g-mr-5"></i>
+                                    Смотреть
+                                </a>
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <!--End Basic Table-->
+    {% else %}
+        <p class="lead">Прошедшие мероприятия на данный момент отсутствуют.</p>
+    {% endif %}
+    </div>
+</section>

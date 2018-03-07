@@ -39,8 +39,8 @@
                             <a href="{% url 'play' %}" class="nav-link g-py-7 g-px-0">Спектакль "В гостях у Ивана"</a>
                         </li>
 
-                        <li class="nav-item g-mx-10--lg g-mx-15--xl ">
-                            <a href="calendar.html" class="nav-link g-py-7 g-px-0">Календарь</a>
+                        <li class="nav-item g-mx-10--lg g-mx-15--xl {% if request.resolver_match.url_name == 'calendar_event_list' %}active{% endif %}">
+                            <a href="{% url 'calendar_event_list' %}" class="nav-link g-py-7 g-px-0">Календарь</a>
                         </li>
 
                         <li class="nav-item g-mx-10--lg g-mx-15--xl ">

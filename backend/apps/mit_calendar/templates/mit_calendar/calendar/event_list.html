@@ -1,0 +1,21 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Календарь мероприятий{% endblock %}
+
+{% block content %}
+    <!-- Breadcrumbs Block -->
+    {% include "mit_calendar/calendar/_partials/breadcrumbs.html" %}
+    <!-- End Breadcrumbs Block -->
+
+    <!-- Map Block -->
+    {% include "mit_calendar/calendar/_partials/map.html" %}
+    <!-- End Map Block -->
+
+    <!-- Table Block -->
+    {% include "mit_calendar/calendar/_partials/future_table.html" %}
+    <!-- End Table Block -->
+
+    <!-- Table Block -->
+    {% include "mit_calendar/calendar/_partials/past_table.html" %}
+    <!-- End Table Block -->
+{% endblock %}

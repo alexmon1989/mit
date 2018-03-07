@@ -1,0 +1,24 @@
+{% load l10n %}
+<section>
+    <div class="g-min-height-400">
+        <yandex-map
+                :coords="[44.62, 33.52]"
+                zoom="11"
+                style="width: 100%; height: 400px;"
+        >
+            {% for event in event_list %}
+                {% if not event.is_past_due %}
+                    <ymap-marker
+                            marker-id="{{ event.pk }}"
+                            marker-type="placemark"
+                            :coords="[{{ event.latitude|unlocalize }}, {{ event.longitude|unlocalize }}]"
+                            hint-content="{{ event.place }}"
+                            :balloon="{header: '{{ event.place }}', body: '<strong>Дата и время:</strong> {{ event.date }} в {{ event.time }} <br><strong>Мест осталось:</strong> 20/25 <br><a href=#>Перейти на страницу мероприятия</a>'}"
+                            :options="{iconColor: '{{ event.color }}', preset: 'islands#greenDotIconWithCaption'}"
+                            cluster-name="1"
+                    ></ymap-marker>
+                {% endif %}
+            {% endfor %}
+        </yandex-map>
+    </div>
+</section>
