@@ -3,7 +3,7 @@
     <div class="g-min-height-400">
         <yandex-map
                 :coords="[44.62, 33.52]"
-                zoom="11"
+                zoom="9"
                 style="width: 100%; height: 400px;"
         >
             {% for event in event_list %}
@@ -15,7 +15,6 @@
                             hint-content="{{ event.place }}"
                             :balloon="{header: '{{ event.place }}', body: '<strong>Дата и время:</strong> {{ event.date }} в {{ event.time }} <br><strong>Мест осталось:</strong> 20/25 <br><a href=#>Перейти на страницу мероприятия</a>'}"
                             :options="{iconColor: '{{ event.color }}', preset: 'islands#greenDotIconWithCaption'}"
-                            cluster-name="1"
                     ></ymap-marker>
                 {% endif %}
             {% endfor %}
