@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from colorful.fields import RGBColorField
+from ckeditor_uploader.fields import RichTextUploadingField
 from backend.abstract_models import TimeStampedModel
 from apps.theater.models import Play
 
@@ -22,6 +23,7 @@ class Event(TimeStampedModel):
     longitude = models.FloatField('Долгота')
     color = RGBColorField('Цвет маркера на карте', default='#FF0000')
     visitors_count = models.PositiveSmallIntegerField('Зрителей допускается', default=25)
+    text = RichTextUploadingField('Текст', null=True, blank=True)
     is_enabled = models.BooleanField('Включено', default=True)
 
     objects = EventManager()
