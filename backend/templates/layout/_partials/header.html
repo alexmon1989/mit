@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load project_tags %}
 <header id="js-header" class="u-header u-header--static">
     <div class="u-header__section u-header__section--light g-bg-white g-transition-0_3 g-py-0">
         <nav class="js-mega-menu navbar navbar-expand-lg">
@@ -39,7 +40,7 @@
                             <a href="{% url 'play' %}" class="nav-link g-py-7 g-px-0">Спектакль "В гостях у Ивана"</a>
                         </li>
 
-                        <li class="nav-item g-mx-10--lg g-mx-15--xl {% if request.resolver_match.url_name == 'calendar_event_list' %}active{% endif %}">
+                        <li class="nav-item g-mx-10--lg g-mx-15--xl {% if request.resolver_match.url_name|in_list:'calendar_event_list,calendar_event_detail' %}active{% endif %}">
                             <a href="{% url 'calendar_event_list' %}" class="nav-link g-py-7 g-px-0">Календарь</a>
                         </li>
 

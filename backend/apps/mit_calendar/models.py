@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 from colorful.fields import RGBColorField
 from ckeditor_uploader.fields import RichTextUploadingField
-from backend.abstract_models import TimeStampedModel
+from backend.abstract_models import TimeStampedModel, SeoModel
 from apps.theater.models import Play
 
 
@@ -12,7 +12,7 @@ class EventManager(models.Manager):
         return super(EventManager, self).get_queryset().filter(is_enabled=True)
 
 
-class Event(TimeStampedModel):
+class Event(SeoModel, TimeStampedModel):
     """Модель события."""
     play = models.ForeignKey(Play, verbose_name='Спектакль', on_delete=models.CASCADE)
     date = models.DateField('Дата')

@@ -1,0 +1,34 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}{% if event.meta_title %}{{ event.meta_title }}{% else %}{{ event.place }}{% endif %}{% endblock %}
+{% block keywords %}{{ event.meta_keywords|default_if_none:'' }}{% endblock %}
+{% block description %}{{ event.meta_description|default_if_none:'' }}{% endblock %}
+
+{% block content %}
+    <!-- Breadcrumbs Block -->
+    {% include "mit_calendar/event_detail/future/_partials/breadcrumbs.html" %}
+    <!-- End Breadcrumbs Block -->
+
+    <section class="g-pt-100 container">
+        <div class="row">
+            <div class="col-12 col-lg-7">
+                <!-- Map Block -->
+                {% include "mit_calendar/event_detail/future/_partials/map.html" %}
+                <!-- End Map Block -->
+            </div>
+            <div class="col-12 col-lg-5">
+                <!-- Properties Block -->
+                {% include "mit_calendar/event_detail/future/_partials/properties.html" %}
+                <!-- End Properties Block -->
+            </div>
+        </div>
+    </section>
+
+
+    <section class="container g-pt-80 g-py-100">
+        <!-- Form Block -->
+        {% include "mit_calendar/event_detail/future/_partials/form.html" %}
+        <!-- End Form Block -->
+    </section>
+
+{% endblock %}
