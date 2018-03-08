@@ -4,11 +4,19 @@
         <h2 class="h4 u-heading-v2__title g-color-gray-dark-v2 g-font-weight-600 text-uppercase">Регистрация на
             мероприятие</h2>
     </div>
-    <p class="g-font-size-16">Регистрация на это мероприятие в данный момент <strong>открыта</strong> и является абсолютно <strong>бесплатной</strong>.
-        Доступно ещё <strong>20 мест</strong>. Вы можете зарегистрироваться, используя форму ниже.</p>
+    {% if event.is_registration_open %}
+        <p class="g-font-size-16">Регистрация на это мероприятие в данный момент <strong>открыта</strong> и является
+            абсолютно <strong>бесплатной</strong>.
+            Доступно ещё мест для зрителей: <strong>{{ event.get_free_places_count }}</strong>.<br> Вы можете зарегистрироваться,
+            используя форму ниже.</p>
+    {% else %}
+        <p class="g-font-size-16">Регистрация на это мероприятие в данный момент <strong>закрыта</strong>.</p>
+    {% endif %}
 </header>
 <!-- End Heading -->
 
-<div class="g-brd-around g-brd-gray-light-v4 g-rounded-5 g-pa-25 g-py-50--md">
-    <event-registration-form event_id="{{ event.pk }}"></event-registration-form>
-</div>
+{% if event.is_registration_open %}
+    <div class="g-brd-around g-brd-gray-light-v4 g-rounded-5 g-pa-25 g-py-50--md">
+        <event-registration-form event_id="{{ event.pk }}"></event-registration-form>
+    </div>
+{% endif %}

@@ -1,5 +1,10 @@
 from django.contrib import admin
-from .models import Event
+from .models import Event, Spectator
+
+
+class SpectatorInline(admin.TabularInline):
+    model = Spectator
+    extra = 3
 
 
 @admin.register(Event)
@@ -30,3 +35,4 @@ class EventAdmin(admin.ModelAdmin):
     ordering = ('-created_at',)
     search_fields = ('play__title', 'place', 'address')
     list_editable = ('is_enabled',)
+    inlines = (SpectatorInline,)

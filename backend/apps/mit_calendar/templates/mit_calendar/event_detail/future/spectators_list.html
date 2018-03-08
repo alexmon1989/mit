@@ -1,0 +1,10 @@
+<strong>Место:</strong> {{ event.place }}<br>
+<strong>Адрес:</strong> {{ event.address }}<br>
+<strong>Дата, время:</strong> {{ event.date }} в {{ event.time }}<br>
+<strong>Спектакль:</strong> {{ event.play.title }}<br><br>
+<strong>Список зарегистрированных зрителей:</strong>
+<ol>
+    {% for spectator in event.get_spectators %}
+        <li><strong>{{ spectator.username }}</strong> | {{ spectator.phone }} | {{ spectator.email }} </li>
+    {% endfor %}
+</ol>

@@ -46,7 +46,42 @@ class Event(SeoModel, TimeStampedModel):
         """Возвращает количество прошедших мероприятий"""
         return len(Event.objects.enabled().filter(date__lt=timezone.now().date()))
 
+    def get_spectators(self):
+        """Возвращает зрителей мероприятия."""
+        return self.spectator_set.all()
+
+    def get_free_places_count(self):
+        """Возвращает количество свободных мест для регистрации."""
+        return self.visitors_count - len(self.get_spectators())
+
+    def get_spectators_percent(self):
+        """Возвращает заполненность зрителями в процентах"""
+        return int((len(self.get_spectators()) / self.visitors_count) * 100)
+
+    @property
+    def is_registration_open(self):
+        """Открыта ли регистрация на мероприятие."""
+        if self.is_past_due or len(self.get_spectators()) >= self.visitors_count:
+            return False
+        return True
+
     class Meta:
         verbose_name = 'Событие'
         verbose_name_plural = 'События'
         ordering = ('date',)
+
+
+class Spectator(TimeStampedModel):
+    """Модель зрителя мероприятия."""
+    event = models.ForeignKey(Event, verbose_name='Событие', on_delete=models.CASCADE)
+    username = models.CharField('Имя', max_length=255)
+    phone = models.CharField('Телефон', max_length=255)
+    email = models.EmailField('E-Mail', max_length=255)
+
+    def __str__(self):
+        return self.username
+
+    class Meta:
+        verbose_name = 'Зритель'
+        verbose_name_plural = 'Зрители'
+        ordering = ('username',)
