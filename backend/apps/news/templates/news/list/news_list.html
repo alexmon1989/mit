@@ -1,0 +1,27 @@
+{% extends 'layout/base.html' %}
+
+{% load project_tags %}
+
+{% block title %}Список новостей{% endblock %}
+
+{% if is_paginated %}
+    {% block meta %}
+        {% if page_obj.has_previous %}
+            <link rel="prev" href="?{% url_replace request 'page' page_obj.previous_page_number %}">
+        {% endif %}
+
+        {% if page_obj.has_next %}
+            <link rel="next" href="?{% url_replace request 'page' page_obj.next_page_number %}">
+        {% endif %}
+    {% endblock %}
+{% endif %}
+
+{% block content %}
+    <!-- Breadcrumbs Block -->
+    {% include "news/list/_partials/breadcrumbs.html" %}
+    <!-- End Promo Block -->
+
+    <!-- List News Block -->
+    {% include "news/list/_partials/news_list.html" %}
+    <!-- End List News Block -->
+{% endblock %}

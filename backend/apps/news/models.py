@@ -17,7 +17,8 @@ class News(SeoModel, TimeStampedModel):
         'Slug (для url)',
         max_length=255,
         default='',
-        unique=True
+        unique=True,
+        db_index=True
     )
     text = RichTextUploadingField('Текст', blank=False)
     is_enabled = models.BooleanField('Включено', default=True)

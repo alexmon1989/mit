@@ -1,5 +1,13 @@
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 from .models import News
+
+
+class NewsListView(ListView):
+    """Отображает страницу списка новостей."""
+    model = News
+    queryset = News.objects.enabled()
+    template_name = 'news/list/news_list.html'
+    paginate_by = 1
 
 
 class NewsDetailView(DetailView):
