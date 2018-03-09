@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-12">
         <div id="carousel-person-photos" class="js-carousel text-center g-font-size-0 g-pb-20" data-infinite="true"
-             data-center-padding="60px" data-slides-show="4" data-slides-scroll="4" data-rows="{% if media_count > 6 %}2{% else %}1{% endif %}"
+             data-center-padding="60px" data-slides-show="4" data-slides-scroll="4" data-rows="{% if play.get_media_count > 6 %}2{% else %}1{% endif %}"
              data-arrows-classes="u-arrow-v1 g-absolute-centered--y g-width-25 g-height-25"
              data-arrow-left-classes="g-left-0 u-bg-left-arrow"
              data-arrow-right-classes="g-right-0 u-bg-right-arrow"
@@ -12,7 +12,7 @@
             {% for video in play.get_videos %}
                 <div class="js-slide g-pa-10">
                     <a class="js-fancybox d-block u-block-hover u-bg-overlay g-bg-black-opacity-0_3--after g-bg-primary-opacity-0_8--hover--after g-transition-0_3"
-                       data-fancybox-gallery="lightbox-gallery--10"
+                       data-fancybox="lightbox-gallery--10"
                        href="https://www.youtube.com/embed/{{ video.youtube_id }}?autoplay=1"
                        title="Смотреть">
                         <img class="img-fluid" src="//img.youtube.com/vi/{{ video.youtube_id }}/mqdefault.jpg"
@@ -30,7 +30,7 @@
             {% for image in play.get_photos %}
                 <div class="js-slide g-pa-10">
                     <a class="js-fancybox d-block u-block-hover u-bg-overlay g-bg-black-opacity-0_1--after g-bg-primary-opacity-0_8--hover--after g-transition-0_3"
-                       data-fancybox-gallery="lightbox-gallery--10"
+                       data-fancybox="lightbox-gallery--10"
                        href="{{ image.image|thumbnail_url:'play_lg' }}"
                        title="Увеличить">
                         <img class="img-fluid" src="{{ image.image|thumbnail_url:'play_sm' }}"

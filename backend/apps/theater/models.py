@@ -81,6 +81,10 @@ class Play(SeoModel, TimeStampedModel):
         """Возвращает список видео спектакля."""
         return self.playvideo_set.filter(is_visible=True).order_by('created_at').all()
 
+    def get_media_count(self):
+        """Возвращает количество медиа (фото + видео)."""
+        return len(self.get_photos()) + len(self.get_videos())
+
     def get_properties(self):
         """Возвращает список свойств спектакля."""
         return self.playproperty_set.order_by('created_at').all()
