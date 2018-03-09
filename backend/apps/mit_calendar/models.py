@@ -13,7 +13,7 @@ class EventManager(models.Manager):
 
 
 class Event(SeoModel, TimeStampedModel):
-    """Модель события."""
+    """Модель мероприятия."""
     play = models.ForeignKey(Play, verbose_name='Спектакль', on_delete=models.CASCADE)
     date = models.DateField('Дата')
     time = models.TimeField('Время')
@@ -58,6 +58,18 @@ class Event(SeoModel, TimeStampedModel):
         """Возвращает заполненность зрителями в процентах"""
         return int((len(self.get_spectators()) / self.visitors_count) * 100)
 
+    def get_photos(self):
+        """Возвращает список фотографий спектакля."""
+        return self.eventphoto_set.filter(is_visible=True).order_by('created_at').all()
+
+    def get_videos(self):
+        """Возвращает список видео спектакля."""
+        return self.eventvideo_set.filter(is_visible=True).order_by('created_at').all()
+
+    def get_media_count(self):
+        """Возвращает количество медиа (фото + видео)."""
+        return len(self.get_photos()) + len(self.get_videos())
+
     @property
     def is_registration_open(self):
         """Открыта ли регистрация на мероприятие."""
@@ -85,3 +97,44 @@ class Spectator(TimeStampedModel):
         verbose_name = 'Зритель'
         verbose_name_plural = 'Зрители'
         ordering = ('username',)
+
+
+class EventPhoto(TimeStampedModel):
+    """Модель фотографии."""
+
+    def upload_to(instance, filename):
+        return 'events/{}/{}'.format(instance.event.pk, filename)
+
+    image = models.ImageField(
+        'Изображение',
+        upload_to=upload_to,
+        help_text='Оптимальный размер: 800px*500px.'
+    )
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, verbose_name='Мероприятие')
+    is_visible = models.BooleanField('Включено', default=True)
+
+    def __str__(self):
+        return 'Изображение #{}'.format(self.pk)
+
+    class Meta:
+        verbose_name = 'Изображение'
+        verbose_name_plural = 'Изображения'
+
+
+class EventVideo(TimeStampedModel):
+    """Модель видео спектакля."""
+    youtube_id = models.CharField(
+        'Идентификатор на Youtube',
+        help_text='Например, для видео https://www.youtube.com/watch?v=JMJXvsCLu6, '
+                  'его идентификатором будет JMJXvsCLu6.',
+        max_length=32
+    )
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, verbose_name='Мероприятие')
+    is_visible = models.BooleanField('Включено', default=True)
+
+    def __str__(self):
+        return 'Видео #{}'.format(self.pk)
+
+    class Meta:
+        verbose_name = 'Видео'
+        verbose_name_plural = 'Видео'

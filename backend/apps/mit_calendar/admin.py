@@ -1,5 +1,15 @@
 from django.contrib import admin
-from .models import Event, Spectator
+from .models import Event, Spectator, EventPhoto, EventVideo
+
+
+class EventPhotoInline(admin.TabularInline):
+    model = EventPhoto
+    extra = 3
+
+
+class EventVideoInline(admin.TabularInline):
+    model = EventVideo
+    extra = 3
 
 
 class SpectatorInline(admin.TabularInline):
@@ -35,4 +45,4 @@ class EventAdmin(admin.ModelAdmin):
     ordering = ('-created_at',)
     search_fields = ('play__title', 'place', 'address')
     list_editable = ('is_enabled',)
-    inlines = (SpectatorInline,)
+    inlines = (SpectatorInline, EventPhotoInline, EventVideoInline)

@@ -1,0 +1,46 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}{% if event.meta_title %}{{ event.meta_title }}{% else %}{{ event.place }}{% endif %}{% endblock %}
+{% block keywords %}{{ event.meta_keywords|default_if_none:'' }}{% endblock %}
+{% block description %}{{ event.meta_description|default_if_none:'' }}{% endblock %}
+
+{% block content %}
+    <!-- Breadcrumbs Block -->
+    {% include "mit_calendar/event_detail/past/_partials/breadcrumbs.html" %}
+    <!-- End Breadcrumbs Block -->
+
+    <section class="g-pt-100 container">
+        <div class="row">
+            <div class="col-12 col-lg-7">
+                <!-- Map Block -->
+                {% include "mit_calendar/event_detail/past/_partials/map.html" %}
+                <!-- End Map Block -->
+            </div>
+            <div class="col-12 col-lg-5">
+                <!-- Properties Block -->
+                {% include "mit_calendar/event_detail/past/_partials/properties.html" %}
+                <!-- End Properties Block -->
+            </div>
+        </div>
+    </section>
+
+    <section class="container g-pt-80">
+        <!-- Registration Block -->
+        {% include "mit_calendar/event_detail/past/_partials/registration.html" %}
+        <!-- End Registration Block -->
+    </section>
+
+    {% if event.get_media_count > 0 %}
+        <section class="container g-pt-50">
+            <!-- Gallery Block -->
+            {% include "mit_calendar/event_detail/past/_partials/gallery.html" %}
+            <!-- End Gallery Block -->
+        </section>
+    {% endif %}
+
+    <section class="container g-pt-80 g-pb-100">
+        <!-- Comments Block -->
+        {% include "mit_calendar/event_detail/past/_partials/comments.html" %}
+        <!-- End Comments Block -->
+    </section>
+{% endblock %}

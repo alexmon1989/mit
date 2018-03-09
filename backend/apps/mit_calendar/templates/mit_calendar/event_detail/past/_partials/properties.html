@@ -1,0 +1,23 @@
+<dl class="row g-pt-30 g-pt-0--lg">
+    <dt class="col-sm-5 text-uppercase">Спектакль</dt>
+    <dd class="col-sm-7"><a href="{% url 'play' %}">{{ event.play.title }}</a></dd>
+
+    <dt class="col-sm-5 text-uppercase">Дата</dt>
+    <dd class="col-sm-7">{{ event.date }}</dd>
+
+    <dt class="col-sm-5 text-uppercase">Время</dt>
+    <dd class="col-sm-7">{{ event.time }}</dd>
+
+    <dt class="col-sm-5 text-uppercase">Место проведения</dt>
+    <dd class="col-sm-7">{{ event.place }}</dd>
+
+
+    <dt class="col-sm-5 text-uppercase">Адрес</dt>
+    <dd class="col-sm-7">{{ event.address }}</dd>
+</dl>
+
+{% if event.text %}
+    <div class="g-pt-20--lg">
+        {{ event.text|safe }}
+    </div>
+{% endif %}
