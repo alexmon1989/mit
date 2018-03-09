@@ -52,25 +52,25 @@
                         </li>
                         <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
                             <h4 class="h6 g-pr-20 mb-0">
-                                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="news_list.html">Новости</a>
+                                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="{% url 'news_list' %}">Новости</a>
                                 <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
                             </h4>
                         </li>
                         <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
                             <h4 class="h6 g-pr-20 mb-0">
-                                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="play.html">Спектакль "В гостях у Ивана"</a>
+                                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="{% url 'play' %}">Спектакль "В гостях у Ивана"</a>
                                 <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
                             </h4>
                         </li>
                         <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
                             <h4 class="h6 g-pr-20 mb-0">
-                                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="calendar.html">Календарь</a>
+                                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="{% url 'calendar_event_list' %}">Календарь</a>
                                 <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
                             </h4>
                         </li>
                         <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
                             <h4 class="h6 g-pr-20 mb-0">
-                                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="contacts.html">Контакты</a>
+                                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="{% url 'contacts' %}">Контакты</a>
                                 <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
                             </h4>
                         </li>
@@ -85,11 +85,25 @@
                     <h2 class="u-heading-v3__title h6 text-uppercase g-brd-primary">Связь с нами</h2>
                 </div>
 
+                {% contacts_footer as contacts_footer %}
                 <address class="g-bg-no-repeat g-line-height-2">
-                    Телефон: 800 123 3456
-                    <br>
-                    Email:
-                    <a href="mailto:info@htmlstream.com" class="">info@htmlstream.com</a>
+                    {% for contact in contacts_footer %}
+
+                    {% endfor %}
+                    Телефон:<br>
+                    {% for contact in contacts_footer %}
+                        {% if contact.contact_type == 1 %}
+                            <i class="fa fa-phone g-mr-3"></i>
+                            <a class="g-color-white-opacity-0_7" href="tel:{{ contact.value }}">{{ contact.value }}</a><br>
+                        {% endif %}
+                    {% endfor %}
+                    Email:<br>
+                    {% for contact in contacts_footer %}
+                        {% if contact.contact_type == 2 %}
+                            <i class="fa fa-envelope g-mr-3"></i>
+                            <a class="g-color-white-opacity-0_7" href="mailto:{{ contact.value }}">{{ contact.value }}</a><br>
+                        {% endif %}
+                    {% endfor %}
                 </address>
             </div>
             <!-- End Footer Content -->

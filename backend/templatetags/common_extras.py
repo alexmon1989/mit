@@ -1,6 +1,7 @@
 from django import template
 from apps.contacts.models import SocialLinksModel
 from apps.news.models import News
+from apps.contacts.models import ContactFooter
 
 register = template.Library()
 
@@ -36,3 +37,8 @@ def social_links():
 @register.simple_tag
 def last_news():
     return News.objects.enabled().order_by('-created_at')[:3]
+
+
+@register.simple_tag
+def contacts_footer():
+    return ContactFooter.objects.filter(is_enabled=True).all()
