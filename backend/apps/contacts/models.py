@@ -32,3 +32,17 @@ class ContactFooter(TimeStampedModel):
     class Meta:
         verbose_name = 'Контакт'
         verbose_name_plural = 'Контактные данные в "подвале"'
+
+
+class SocialLinksModel(models.Model):
+    """Модель ссылок на соц. сети."""
+    fb = models.URLField('Facebook', max_length=255, null=True, blank=True)
+    vk = models.URLField('Вконтакте', max_length=255, null=True, blank=True)
+    instagram = models.URLField('Instagram', max_length=255, null=True, blank=True)
+    ok = models.URLField('Одноклассники', max_length=255, null=True, blank=True)
+    twitter = models.URLField('Twitter', max_length=255, null=True, blank=True)
+    youtube = models.URLField('Youtube', max_length=255, null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'Ссылки на соц. сети'
+        verbose_name_plural = 'Ссылки на соц. сети'

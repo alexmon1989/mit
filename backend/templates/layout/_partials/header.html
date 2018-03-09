@@ -1,5 +1,6 @@
 {% load staticfiles %}
 {% load project_tags %}
+
 <header id="js-header" class="u-header u-header--static">
     <div class="u-header__section u-header__section--light g-bg-white g-transition-0_3 g-py-0">
         <nav class="js-mega-menu navbar navbar-expand-lg">
@@ -51,23 +52,54 @@
                 </div>
                 <!-- End Navigation -->
 
-                <div class="d-inline-block g-hidden-xs-down g-pos-rel g-valign-middle g-pl-40 g-pl-10--lg g-pt-10 g-pt-0--lg">
-                    <ul class="list-inline text-center text-md-right g-my-10 g-my-0--md">
+                {% social_links as social_links %}
+                {% if social_links %}
+                    <div class="d-inline-block g-hidden-xs-down g-pos-rel g-valign-middle g-pl-40 g-pl-10--lg g-pt-10 g-pt-0--lg">
+                        <ul class="list-inline text-center text-md-right g-my-10 g-my-0--md">
 
-                        <li class="list-inline-item g-mx-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Вконтакте">
-                            <a href="https://vk.com/teatr_b" target="_blank" class="g-color-black-opacity-0_6 g-color-black--hover g-font-size-14 u-icon-v2 u-icon-size--xs g-rounded-50x">
-                                <i class="fa fa-vk"></i>
-                            </a>
-                        </li>
+                            {% if social_links.fb %}
+                                <li class="list-inline-item g-mx-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook">
+                                    <a href="{{ social_links.fb }}" target="_blank" class="g-color-black-opacity-0_6 g-color-black--hover g-font-size-14 u-icon-v2 u-icon-size--xs g-rounded-50x">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                            {% endif %}
 
-                        <li class="list-inline-item g-mx-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Instagram">
-                            <a href="https://instagram.com/b3hak" target="_blank" class="g-color-black-opacity-0_6 g-color-black--hover g-font-size-14 u-icon-v2 u-icon-size--xs g-rounded-50x">
-                                <i class="fa fa-instagram"></i>
-                            </a>
-                        </li>
+                            {% if social_links.vk %}
+                                <li class="list-inline-item g-mx-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Вконтакте">
+                                    <a href="{{ social_links.vk }}" target="_blank" class="g-color-black-opacity-0_6 g-color-black--hover g-font-size-14 u-icon-v2 u-icon-size--xs g-rounded-50x">
+                                        <i class="fa fa-vk"></i>
+                                    </a>
+                                </li>
+                            {% endif %}
 
-                    </ul>
-                </div>
+                            {% if social_links.instagram %}
+                                <li class="list-inline-item g-mx-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Instagram">
+                                    <a href="{{ social_links.instagram }}" target="_blank" class="g-color-black-opacity-0_6 g-color-black--hover g-font-size-14 u-icon-v2 u-icon-size--xs g-rounded-50x">
+                                        <i class="fa fa-instagram"></i>
+                                    </a>
+                                </li>
+                            {% endif %}
+
+                            {% if social_links.twitter %}
+                                <li class="list-inline-item g-mx-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter">
+                                    <a href="{{ social_links.twitter }}" target="_blank" class="g-color-black-opacity-0_6 g-color-black--hover g-font-size-14 u-icon-v2 u-icon-size--xs g-rounded-50x">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                            {% endif %}
+
+                            {% if social_links.youtube %}
+                                <li class="list-inline-item g-mx-5" data-toggle="tooltip" data-placement="top" title="" data-original-title="Youtube">
+                                    <a href="{{ social_links.youtube }}" target="_blank" class="g-color-black-opacity-0_6 g-color-black--hover g-font-size-14 u-icon-v2 u-icon-size--xs g-rounded-50x">
+                                        <i class="fa fa-youtube"></i>
+                                    </a>
+                                </li>
+                            {% endif %}
+
+                        </ul>
+                    </div>
+                {% endif %}
             </div>
         </nav>
     </div>

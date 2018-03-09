@@ -1,6 +1,6 @@
 from django.views.generic import FormView
 from django.http import Http404, HttpResponse
-from .models import Contact
+from .models import Contact, SocialLinksModel
 from .forms import ContactForm
 
 
@@ -23,6 +23,7 @@ class ContactView(FormView):
     def get_context_data(self, **kwargs):
         context = super(ContactView, self).get_context_data(**kwargs)
         context['page_data'] = Contact.objects.first()
+        context['social_links'] = SocialLinksModel.objects.first()
         if not context['page_data']:
             raise Http404("Contact model does not exist.")
         return context

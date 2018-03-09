@@ -1,0 +1,53 @@
+{% if social_links %}
+    <!-- Figure Social Icons -->
+    <ul class="list-inline">
+        {% if social_links.fb %}
+            <li class="list-inline-item">
+                <a target="_blank" class="u-icon-v1 g-color-gray-dark-v5 g-bg-gray-light-v5 g-color-white--hover g-bg-primary--hover rounded-circle" href="{{ social_links.fb }}">
+                    <i class="g-font-size-default fa fa-facebook"></i>
+                </a>
+            </li>
+        {% endif %}
+
+        {% if social_links.vk %}
+            <li class="list-inline-item">
+                <a target="_blank" class="u-icon-v1 g-color-gray-dark-v5 g-bg-gray-light-v5 g-color-white--hover g-bg-primary--hover rounded-circle" href="{{ social_links.vk }}">
+                    <i class="g-font-size-default fa fa-vk"></i>
+                </a>
+            </li>
+        {% endif %}
+
+        {% if social_links.instagram %}
+            <li class="list-inline-item">
+                <a target="_blank" class="u-icon-v1 g-color-gray-dark-v5 g-bg-gray-light-v5 g-color-white--hover g-bg-primary--hover rounded-circle" href="{{ social_links.instagram }}">
+                    <i class="g-font-size-default fa fa-instagram"></i>
+                </a>
+            </li>
+        {% endif %}
+
+        {% if social_links.ok %}
+            <li class="list-inline-item">
+                <a target="_blank" class="u-icon-v1 g-color-gray-dark-v5 g-bg-gray-light-v5 g-color-white--hover g-bg-primary--hover rounded-circle" href="{{ social_links.ok }}">
+                    <i class="g-font-size-default fa fa-odnoklassniki"></i>
+                </a>
+            </li>
+        {% endif %}
+
+        {% if social_links.twitter %}
+            <li class="list-inline-item">
+                <a target="_blank" class="u-icon-v1 g-color-gray-dark-v5 g-bg-gray-light-v5 g-color-white--hover g-bg-primary--hover rounded-circle" href="{{ social_links.twitter }}">
+                    <i class="g-font-size-default fa fa-twitter"></i>
+                </a>
+            </li>
+        {% endif %}
+
+        {% if social_links.youtube %}
+            <li class="list-inline-item">
+                <a target="_blank" class="u-icon-v1 g-color-gray-dark-v5 g-bg-gray-light-v5 g-color-white--hover g-bg-primary--hover rounded-circle" href="{{ social_links.youtube }}">
+                    <i class="g-font-size-default fa fa-youtube"></i>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+    <!-- End Figure Social Icons -->
+{% endif %}
