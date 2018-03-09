@@ -1,0 +1,23 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}{% if news.meta_title %}{{ news.meta_title }}{% else %}{{ news.title }}{% endif %}{% endblock %}
+{% block keywords %}{{ news.meta_keywords|default_if_none:'' }}{% endblock %}
+{% block description %}{{ news.meta_description|default_if_none:'' }}{% endblock %}
+
+{% block content %}
+    <!-- Breadcrumbs Block -->
+    {% include "news/detail/_partials/breadcrumbs.html" %}
+    <!-- End Promo Block -->
+
+    <div class="container g-pt-100 g-pb-20">
+        <div class="row justify-content-between">
+            <!-- Article Block -->
+            {% include "news/detail/_partials/article.html" %}
+            <!-- End Article Block -->
+
+            <!-- Sidebar Block -->
+            {% include "news/detail/_partials/sidebar.html" %}
+            <!-- End Sidebar Block -->
+        </div>
+    </div>
+{% endblock %}

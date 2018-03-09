@@ -1,0 +1,29 @@
+{% load thumbnail %}
+
+<div class="col-lg-9 g-mb-80">
+    <div class="g-pr-20--lg">
+        <!-- Blog Minimal Blocks -->
+        <article class="g-mb-50">
+            <div class="g-mb-30">
+                <div class="media g-mb-25">
+                    <div class="media-body">
+                        <i class="g-color-gray-dark-v4 align-middle g-font-size-default mr-1 g-mb-1 fa fa-calendar"
+                           aria-hidden="true" title="Дата публикации"></i>
+                        <span class="g-color-gray-dark-v4 g-font-size-12">{{ news.created_at|date }}</span>
+                    </div>
+                </div>
+
+                <img class="img-fluid w-100 g-mb-25" src="{{ news.image|thumbnail_url:"news_lg" }}" alt="{{ news.title }}">
+
+                <h2 class="h4 g-color-black g-font-weight-600 mb-3">{{ news.title }}</h2>
+
+                <div class="g-line-height-1_8">
+                    {{ news.text|safe }}
+                </div>
+            </div>
+        </article>
+        <!-- End Blog Minimal Blocks -->
+
+        <h4>Комментарии</h4>
+    </div>
+</div>

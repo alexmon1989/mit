@@ -1,0 +1,43 @@
+{% load thumbnail %}
+
+<div class="col-lg-3 g-brd-left--lg g-brd-gray-light-v4 g-mb-80">
+    <div class="g-pl-20--lg">
+        <!-- Links -->
+        <div class="g-mb-50">
+            <h3 class="h5 g-color-black g-font-weight-600 mb-4">Новостная лента</h3>
+            {% for item in last_news %}
+                <!-- Article -->
+                <article class="media g-mb-20">
+                    <a class="d-flex mr-3" href="{% url 'news_detail' slug=item.slug %}">
+                        <img class="rounded-circle g-width-64 g-height-64" src="{{ item.image|thumbnail_url:'news_sm' }}"
+                             alt="{{ item.title }}">
+                    </a>
+
+                    <div class="media-body">
+                        <h3 class="h6">
+                            <a class="g-color-main g-color-primary--hover"
+                               href="{% url 'news_detail' slug=item.slug %}">{{ item.title }}</a>
+                        </h3>
+
+                        <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
+                            <li class="list-inline-item">
+                                {{ item.created_at|date }}
+                            </li>
+                            <li class="list-inline-item">/</li>
+                            <li class="list-inline-item">
+                                <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover"
+                                   href="{% url 'news_detail' slug=item.slug %}">
+                                    <i class="fa fa-comments align-middle"></i>
+                                    18
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+                <!-- End Article -->
+            {% endfor %}
+        </div>
+        <!-- End Links -->
+    </div>
+</div>
+</div>
