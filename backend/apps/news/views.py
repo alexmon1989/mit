@@ -7,7 +7,7 @@ class NewsListView(ListView):
     model = News
     queryset = News.objects.enabled()
     template_name = 'news/list/news_list.html'
-    paginate_by = 1
+    paginate_by = 6
 
 
 class NewsDetailView(DetailView):
