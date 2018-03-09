@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'colorful',
     'apps.theater.apps.TheaterConfig',
     'apps.mit_calendar.apps.MitCalendarConfig',
+    'apps.news.apps.NewsConfig',
+    'apps.contacts.apps.ContactsConfig',
 ]
 
 MIDDLEWARE = [
@@ -205,5 +207,20 @@ THUMBNAIL_ALIASES = {
         'play_sm': {'size': (320, 180), 'crop': True},
         'avatar': {'size': (400, 450), 'crop': True},
         'avatar_sq': {'size': (400, 400), 'crop': True},
+        'news_lg': {'size': (900, 600), 'crop': False},
+        'news_md': {'size': (540, 360), 'crop': False},
+        'news_sm': {'size': (100, 100), 'crop': True},
     },
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'theater.b3hak@gmail.com'
+EMAIL_HOST_PASSWORD = 'hFd3gL%d'
+EMAIL_PORT = 587
+EMAIL_SUBJECT_PREFIX = '[театр-мягкийзнак.рф] '
+SERVER_EMAIL = 'theater.b3hak@gmail.com'
+
+ADMINS = [('Alex', 'alex.mon1989@gmail.com'), ]
+MANAGERS = [('Alex', 'alex.mon1989@gmail.com'), ]

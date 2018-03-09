@@ -7,4 +7,5 @@ django-js-asset==1.0.0
 easy-thumbnails==2.5
 Pillow==5.0.0
 pytz==2018.3
+singlemodeladmin==0.8
 sqlparse==0.2.4

@@ -23,6 +23,7 @@ urlpatterns = [
     path('v-gostyah-u-ivana/', include('apps.theater.urls')),
     path('calendar/', include('apps.mit_calendar.urls')),
     path('news/', include('apps.news.urls')),
+    path('contacts/', include('apps.contacts.urls')),
     re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]
 
