@@ -1,4 +1,6 @@
 {% load staticfiles %}
+{% load project_tags %}
+
 <div class="g-bg-black-opacity-0_9 g-color-white-opacity-0_8 g-py-60">
     <div class="container">
         <div class="row">
@@ -18,30 +20,19 @@
                     <h2 class="u-heading-v3__title h6 text-uppercase g-brd-primary">Последние новости</h2>
                 </div>
 
-                <article>
-                    <h3 class="h6 g-mb-2">
-                        <a class="g-color-white-opacity-0_8 g-color-white--hover" href="news_detail.html">Съёмка рекламного ролика</a>
-                    </h3>
-                    <div class="small g-color-white-opacity-0_6">30 марта 2017 г.</div>
-                </article>
+                {% last_news as last_news %}
+                {% for item in last_news %}
+                    <article>
+                        <h3 class="h6 g-mb-2">
+                            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="{% url 'news_detail' slug=item.slug %}">{{ item.title }}</a>
+                        </h3>
+                        <div class="small g-color-white-opacity-0_6">{{ item.created_at|date }}</div>
+                    </article>
 
-                <hr class="g-brd-white-opacity-0_1 g-my-10">
-
-                <article>
-                    <h3 class="h6 g-mb-2">
-                        <a class="g-color-white-opacity-0_8 g-color-white--hover" href="news_detail.html">Сбор команды</a>
-                    </h3>
-                    <div class="small g-color-white-opacity-0_6">15 марта 2017 г.</div>
-                </article>
-
-                <hr class="g-brd-white-opacity-0_1 g-my-10">
-
-                <article>
-                    <h3 class="h6 g-mb-2">
-                        <a class="g-color-white-opacity-0_8 g-color-white--hover" href="news_detail.html">Старт проекта совсем скоро!</a>
-                    </h3>
-                        <div class="small g-color-white-opacity-0_6">8 марта 2017 г.</div>
-                </article>
+                    {% if not forloop.last %}
+                        <hr class="g-brd-white-opacity-0_1 g-my-10">
+                    {% endif %}
+                {% endfor %}
             </div>
             <!-- End Footer Content -->
 

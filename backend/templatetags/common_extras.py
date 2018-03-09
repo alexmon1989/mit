@@ -1,5 +1,6 @@
 from django import template
 from apps.contacts.models import SocialLinksModel
+from apps.news.models import News
 
 register = template.Library()
 
@@ -30,3 +31,8 @@ def url_replace(request, field, value):
 @register.simple_tag
 def social_links():
     return SocialLinksModel.objects.first()
+
+
+@register.simple_tag
+def last_news():
+    return News.objects.enabled().order_by('-created_at')[:3]
