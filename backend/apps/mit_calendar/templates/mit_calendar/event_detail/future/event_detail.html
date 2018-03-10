@@ -24,11 +24,16 @@
         </div>
     </section>
 
-
-    <section class="container g-pt-80 g-py-100">
+    <section class="container g-pt-50">
         <!-- Form Block -->
         {% include "mit_calendar/event_detail/future/_partials/form.html" %}
         <!-- End Form Block -->
+    </section>
+
+    <section class="container g-pt-80 g-pb-100">
+        <!-- Comments Block -->
+        {% include "mit_calendar/event_detail/past/_partials/comments.html" %}
+        <!-- End Comments Block -->
     </section>
 
 {% endblock %}
