@@ -11,7 +11,7 @@
                 marker-type="placemark"
                 :coords="[{{ event.latitude|unlocalize }}, {{ event.longitude|unlocalize }}]"
                 hint-content="СОШ №265"
-                :balloon="{header: '{{ event.place }}', body: '<strong>Дата и время:</strong> {{ event.date }} в {{ event.time }} <br><strong>Адрес:</strong> {{ event.address }}<br><strong>Мест осталось:</strong> 20/25'}"
+                :balloon="{header: '{{ event.place }}', body: '<strong>Дата и время:</strong> {{ event.date }} в {{ event.time }} <br><strong>Адрес:</strong> {{ event.address }}'}"
                 :options="{iconColor: '{{ event.color }}', preset: 'islands#greenDotIconWithCaption'}"
                 cluster-name="1"
         ></ymap-marker>

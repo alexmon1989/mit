@@ -25,7 +25,7 @@
                             marker-type="placemark"
                             :coords="[{{ event.latitude|unlocalize }}, {{ event.longitude|unlocalize }}]"
                             hint-content="{{ event.place }}"
-                            :balloon="{header: '{{ event.place }}', body: '<strong>Дата и время:</strong> {{ event.date }} в {{ event.time }} <br><strong>Мест осталось:</strong> 20/25 <br><a href={% url 'calendar_event_detail' pk=event.pk %}>Перейти на страницу мероприятия</a>'}"
+                            :balloon="{header: '{{ event.place }}', body: '<strong>Дата и время:</strong> {{ event.date }} в {{ event.time }} <br><strong>Зарегистрировалось участников:</strong> {{ event.get_spectators|length }}/{{ event.visitors_count }}<br><a href={% url 'calendar_event_detail' pk=event.pk %}>Перейти на страницу мероприятия</a>'}"
                             :options="{iconColor: '{{ event.color }}', preset: 'islands#greenDotIconWithCaption'}"
                     ></ymap-marker>
                 {% endif %}
