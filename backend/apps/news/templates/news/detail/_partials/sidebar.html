@@ -28,7 +28,7 @@
                                 <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover"
                                    href="{% url 'news_detail' slug=item.slug %}">
                                     <i class="fa fa-comments align-middle"></i>
-                                    18
+                                    <span class="disqus-comment-count" data-disqus-identifier="news-{{ item.pk }}">0</span>
                                 </a>
                             </li>
                         </ul>
@@ -39,5 +39,4 @@
         </div>
         <!-- End Links -->
     </div>
-</div>
 </div>

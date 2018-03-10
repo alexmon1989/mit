@@ -42,3 +42,15 @@ def last_news():
 @register.simple_tag
 def contacts_footer():
     return ContactFooter.objects.filter(is_enabled=True).all()
+
+
+@register.inclusion_tag('disqus_comments.html', takes_context=True)
+def comments_widget(context, identifier, identifier_id):
+    """Виджет комментариев Disqus."""
+    return {
+        'is_secure': context['request'].is_secure(),
+        'host': context['request'].get_host(),
+        'full_path': context['request'].get_full_path(),
+        'identifier': identifier,
+        'identifier_id': identifier_id
+    }

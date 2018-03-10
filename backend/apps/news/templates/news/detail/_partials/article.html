@@ -1,4 +1,5 @@
 {% load thumbnail %}
+{% load project_tags %}
 
 <div class="col-lg-9 g-mb-80">
     <div class="g-pr-20--lg">
@@ -25,5 +26,7 @@
         <!-- End Blog Minimal Blocks -->
 
         <h4>Комментарии</h4>
+
+        {% comments_widget identifier='news' identifier_id=news.pk %}
     </div>
 </div>
