@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - /var/python_projects/mit/database:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: foo
+      POSTGRES_PASSWORD: foobar
+      POSTGRES_DB: mit
+  web:
+    build: .
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && gunicorn backend.wsgi -b 0.0.0.0:8000 -w 7"
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
