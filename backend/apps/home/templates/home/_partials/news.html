@@ -1,0 +1,44 @@
+{% load thumbnail %}
+
+<section class="g-py-70">
+    <div class="container">
+        <header class="text-center g-width-60x--md mx-auto g-mb-30">
+            <div class="u-heading-v2-3--bottom g-brd-primary g-mb-20">
+                <h2 class="h4 u-heading-v2__title g-color-gray-dark-v2 g-font-weight-600 text-uppercase">Последние
+                    новости</h2>
+            </div>
+        </header>
+
+        <!-- News Block -->
+        <div class="row">
+            {% for item in last_news %}
+                <div class="col-lg-4 g-mb-30">
+                    <!-- Article -->
+                    <article class="u-shadow-v22">
+                        <figure class="g-pos-rel">
+                            <a href="{% url 'news_detail' slug=item.slug %}"><img class="img-fluid w-100"
+                                                                                  src="{{ item.image|thumbnail_url:"news_md" }}"
+                                                                                  alt="{{ item.title }}"></a>
+                            <figcaption
+                                    class="text-uppercase text-center g-line-height-1_2 g-bg-white-opacity-0_8 g-color-gray-dark-v2 g-pos-abs g-top-20 g-px-15 g-py-10">
+                                <strong class="d-block">{{ item.created_at|date:"d" }}</strong>
+                                <hr class="g-brd-gray-dark-v2 my-1">
+                                <small class="d-block">{{ item.created_at|date:"M" }}</small>
+                            </figcaption>
+                        </figure>
+
+                        <div class="g-pa-30">
+                            <h3 class="h5 g-mb-15">
+                                <a class="u-link-v5 g-color-main g-font-weight-600 g-color-primary--hover"
+                                   href="{% url 'news_detail' slug=item.slug %}">{{ item.title }}</a>
+                            </h3>
+
+                            <p>{{ item.text|striptags|truncatewords:40|safe }}</p>
+                        </div>
+                    </article>
+                    <!-- End Article -->
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

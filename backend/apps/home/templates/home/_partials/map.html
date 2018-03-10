@@ -1,0 +1,35 @@
+{% load l10n %}
+<section class="g-pt-70">
+    <div class="container">
+        <header class="text-center g-width-60x--md mx-auto g-mb-30">
+            <div class="u-heading-v2-3--bottom g-brd-primary g-mb-20">
+                <h2 class="h4 u-heading-v2__title g-color-gray-dark-v2 g-font-weight-600 text-uppercase">Карта
+                    предстоящих мероприятий</h2>
+            </div>
+            <p class="g-font-size-16">На каждое мероприятие могут зарегистрироваться только <strong>25 человек</strong>.
+                Спешите это сделать первыми! Для этого <strong>нажмите на маркер</strong> и перейдите на страницу
+                мероприятия.</p>
+        </header>
+    </div>
+
+    <div class="g-min-height-400">
+        <yandex-map
+                :coords="[44.62, 33.52]"
+                zoom="9"
+                style="width: 100%; height: 400px;"
+        >
+            {% for event in event_list %}
+                {% if not event.is_past_due %}
+                    <ymap-marker
+                            marker-id="{{ event.pk }}"
+                            marker-type="placemark"
+                            :coords="[{{ event.latitude|unlocalize }}, {{ event.longitude|unlocalize }}]"
+                            hint-content="{{ event.place }}"
+                            :balloon="{header: '{{ event.place }}', body: '<strong>Дата и время:</strong> {{ event.date }} в {{ event.time }} <br><strong>Мест осталось:</strong> 20/25 <br><a href={% url 'calendar_event_detail' pk=event.pk %}>Перейти на страницу мероприятия</a>'}"
+                            :options="{iconColor: '{{ event.color }}', preset: 'islands#greenDotIconWithCaption'}"
+                    ></ymap-marker>
+                {% endif %}
+            {% endfor %}
+        </yandex-map>
+    </div>
+</section>

@@ -1,0 +1,29 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}{% if page_data.meta_title %}{{ page_data.meta_title }}{% else %}Главная страница{% endif %}{% endblock %}
+{% block keywords %}{{ page_data.meta_keywords|default_if_none:'' }}{% endblock %}
+{% block description %}{{ page_data.meta_description|default_if_none:'' }}{% endblock %}
+
+{% block content %}
+
+    <!-- Promo Block -->
+    {% include "home/_partials/promo.html" %}
+    <!-- End Promo Block -->
+
+    <!-- Icon Blocks -->
+    {% include "home/_partials/icons.html" %}
+    <!-- End Icon Blocks -->
+
+    <!-- About Block -->
+    {% include "home/_partials/about.html" %}
+    <!-- End About Block -->
+
+    <!-- Map Block -->
+    {% include "home/_partials/map.html" %}
+    <!-- End Map Block -->
+
+    <!-- Last News Block -->
+    {% include "home/_partials/news.html" %}
+    <!-- End Last News Block -->
+
+{% endblock %}

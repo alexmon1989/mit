@@ -1,0 +1,36 @@
+{% load thumbnail %}
+
+<section class="g-pt-70 g-pb-30 g-bg-gray-light-v5">
+    <div class="container">
+        <header class="text-center g-width-60x--md mx-auto g-mb-30">
+            <div class="u-heading-v2-3--bottom g-brd-primary g-mb-20">
+                <h2 class="h4 u-heading-v2__title g-color-gray-dark-v2 g-font-weight-600 text-uppercase">{{ page_data.about_title }}</h2>
+            </div>
+        </header>
+
+        <div class="row">
+            <div class="col-lg-6">
+                {{ page_data.about_text|safe }}
+            </div>
+            <div class="col-lg-6 text-center g-mb-30">
+                <div class="js-carousel text-center g-pb-30" data-infinite="true" data-arrows-classes="u-arrow-v1 g-absolute-centered--y g-width-35 g-height-40 g-font-size-18 g-color-gray g-bg-white g-mt-minus-10" data-arrow-left-classes="fa fa-angle-left g-left-0" data-arrow-right-classes="fa fa-angle-right g-right-0">
+                    {% for photo in page_data.get_photos %}
+                        <div class="js-slide">
+                            <a class="js-fancybox"
+                               href="javascript:;"
+                               data-fancybox="lightbox-gallery--07-1"
+                               data-src="{{ photo.image|thumbnail_url:"news_lg" }}"
+                               data-caption=""
+                               data-animate-in="bounceInDown"
+                               data-animate-out="bounceOutDown"
+                               data-speed="1000"
+                               data-overlay-blur-bg="true">
+                                <img class="img-fluid g-rounded-6" src="{{ photo.image|thumbnail_url:"news_md" }}" alt="">
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

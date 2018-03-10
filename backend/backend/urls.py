@@ -19,6 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path('', include('apps.home.urls')),
     path('admin/', admin.site.urls),
     path('v-gostyah-u-ivana/', include('apps.theater.urls')),
     path('calendar/', include('apps.mit_calendar.urls')),

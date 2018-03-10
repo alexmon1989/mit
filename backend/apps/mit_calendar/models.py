@@ -108,7 +108,7 @@ class EventPhoto(TimeStampedModel):
     image = models.ImageField(
         'Изображение',
         upload_to=upload_to,
-        help_text='Оптимальный размер: 800px*500px.'
+        help_text='Оптимальный размер: 900px*600px.'
     )
     event = models.ForeignKey(Event, on_delete=models.CASCADE, verbose_name='Мероприятие')
     is_visible = models.BooleanField('Включено', default=True)
