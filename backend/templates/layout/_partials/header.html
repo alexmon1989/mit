@@ -33,8 +33,8 @@
                             <a href="{% url 'news_list' %}" class="nav-link g-py-7 g-px-0">Новости</a>
                         </li>
 
-                        <li class="nav-item g-mx-10--lg g-mx-15--xl ">
-                            <a href="about.html" class="nav-link g-py-7 g-px-0">О нас</a>
+                        <li class="nav-item g-mx-10--lg g-mx-15--xl {% if request.resolver_match.url_name == 'about' %}active{% endif %}">
+                            <a href="{% url 'about' %}" class="nav-link g-py-7 g-px-0">О нас</a>
                         </li>
 
                         <li class="nav-item g-mx-10--lg g-mx-15--xl {% if request.resolver_match.url_name == 'play' %}active{% endif %}">

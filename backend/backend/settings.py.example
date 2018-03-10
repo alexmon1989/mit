@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'apps.mit_calendar.apps.MitCalendarConfig',
     'apps.news.apps.NewsConfig',
     'apps.contacts.apps.ContactsConfig',
+    'apps.about.apps.AboutConfig',
 ]
 
 MIDDLEWARE = [
@@ -210,6 +211,7 @@ THUMBNAIL_ALIASES = {
         'news_lg': {'size': (900, 600), 'crop': False},
         'news_md': {'size': (540, 360), 'crop': False},
         'news_sm': {'size': (100, 100), 'crop': True},
+        'partner': {'size': (200, 100), 'crop': False},
     },
 }
 

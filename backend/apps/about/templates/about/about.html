@@ -1,0 +1,25 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}{% if page_data.meta_title %}{{ page_data.meta_title }}{% else %}О нас{% endif %}{% endblock %}
+{% block keywords %}{{ page_data.meta_keywords|default_if_none:'' }}{% endblock %}
+{% block description %}{{ page_data.meta_description|default_if_none:'' }}{% endblock %}
+
+{% block content %}
+
+    <!-- Breadcrumbs Block -->
+    {% include 'about/_partials/breadcrumbs.html' %}
+    <!-- End Breadcrumbs Block -->
+
+    <!-- Article Block -->
+    {% include "about/_partials/article.html" %}
+    <!-- End Article Block -->
+
+    <!-- Team Block -->
+    {% include "about/_partials/team.html" %}
+    <!-- End Team Block -->
+
+    <!-- Clients Block -->
+    {% include "about/_partials/partners.html" %}
+    <!-- End Clients Block -->
+
+{% endblock %}

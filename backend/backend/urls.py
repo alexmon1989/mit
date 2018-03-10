@@ -24,6 +24,7 @@ urlpatterns = [
     path('calendar/', include('apps.mit_calendar.urls')),
     path('news/', include('apps.news.urls')),
     path('contacts/', include('apps.contacts.urls')),
+    path('about/', include('apps.about.urls')),
     re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]
 
