@@ -1,7 +1,9 @@
 from django import template
+from django.utils.safestring import mark_safe
 from apps.contacts.models import SocialLinksModel
 from apps.news.models import News
 from apps.contacts.models import ContactFooter
+from apps.settings.models import Setting
 
 register = template.Library()
 
@@ -54,3 +56,12 @@ def comments_widget(context, identifier, identifier_id):
         'identifier': identifier,
         'identifier_id': identifier_id
     }
+
+
+@register.simple_tag
+def get_setting(key):
+    """Возвращает значение настройки."""
+    setting = Setting.objects.filter(key=key).first()
+    if setting:
+        return mark_safe(setting.value)
+    return ''

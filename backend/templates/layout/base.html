@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load project_tags %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -90,5 +91,7 @@
         });
     });
 </script>
+
+{% get_setting 'yandex_metrika' %}
 </body>
 </html>
