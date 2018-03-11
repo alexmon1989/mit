@@ -1,4 +1,5 @@
 from django.contrib import admin
+from singlemodeladmin import SingleModelAdmin
 from .models import Home, Photo
 
 
@@ -8,7 +9,7 @@ class PhotoInline(admin.TabularInline):
 
 
 @admin.register(Home)
-class HomeAdmin(admin.ModelAdmin):
+class HomeAdmin(SingleModelAdmin):
     """Класс для описания интерфейса администрирования событий."""
     fieldsets = (
         ('Промоблок', {
