@@ -6,7 +6,7 @@
     </header>
     <!-- End Heading -->
 
-    {% if future_events_count > 0 %}
+    {% if future_events|length > 0 %}
         <!--Basic Table-->
         <div class="table-responsive">
             <table class="table table-bordered u-table--v2">
@@ -22,44 +22,42 @@
                 </thead>
 
                 <tbody>
-                {% for event in event_list %}
-                    {% if not event.is_past_due %}
-                        <tr>
-                            <td class="align-middle g-font-weight-600" nowrap>
-                                <i class="fa fa-calendar g-mr-1"></i>
-                                <span>{{ event.date }}</span>
-                            </td>
-                            <td class="align-middle g-font-weight-600" nowrap>
-                                <i class="fa fa-clock-o g-mr-1"></i>
-                                <span>{{ event.time }}</span>
-                            </td>
-                            <td class="align-middle">{{ event.place }}</td>
-                            <td class="align-middle">
-                                <div class="d-flex">
-                                    <i class="fa fa-map-marker g-font-size-18 g-color-gray-dark-v5 g-pos-rel g-top-5 g-mr-7"></i>
-                                    <span>{{ event.address }}</span>
+                {% for event in future_events %}
+                    <tr>
+                        <td class="align-middle g-font-weight-600" nowrap>
+                            <i class="fa fa-calendar g-mr-1"></i>
+                            <span>{{ event.date }}</span>
+                        </td>
+                        <td class="align-middle g-font-weight-600" nowrap>
+                            <i class="fa fa-clock-o g-mr-1"></i>
+                            <span>{{ event.time }}</span>
+                        </td>
+                        <td class="align-middle">{{ event.place.title }}</td>
+                        <td class="align-middle" nowrap>
+                            <div class="d-flex">
+                                <i class="fa fa-map-marker g-font-size-18 g-color-gray-dark-v5 g-pos-rel g-top-5 g-mr-7"></i>
+                                <span>{{ event.place.address }}</span>
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <div class="progress rounded-0 g-overflow-visible g-mb-20">
+                                <div class="progress-bar"
+                                     role="progressbar"
+                                     style="width: {{ event.get_spectators_percent }}%;"
+                                     aria-valuenow="{{ event.get_spectators|length }}"
+                                     aria-valuemin="0"
+                                     aria-valuemax="{{ event.visitors_count }}">
+                                    <div class="pull-right g-font-size-11 g-px-5">{{ event.get_spectators|length }}/{{ event.visitors_count }}</div>
                                 </div>
-                            </td>
-                            <td class="align-middle">
-                                <div class="progress rounded-0 g-overflow-visible g-mb-20">
-                                    <div class="progress-bar"
-                                         role="progressbar"
-                                         style="width: {{ event.get_spectators_percent }}%;"
-                                         aria-valuenow="{{ event.get_spectators|length }}"
-                                         aria-valuemin="0"
-                                         aria-valuemax="{{ event.visitors_count }}">
-                                        <div class="pull-right g-font-size-11 g-px-5">{{ event.get_spectators|length }}/{{ event.visitors_count }}</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="align-middle">
-                                <a class="btn btn-block u-btn-primary g-rounded-50 g-py-5" href="{% url 'calendar_event_detail' pk=event.pk %}">
-                                    <i class="fa fa-plus g-mr-5"></i>
-                                    Зарегистрироваться
-                                </a>
-                            </td>
-                        </tr>
-                    {% endif %}
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <a class="btn btn-block u-btn-primary g-rounded-50 g-py-5" href="{% url 'calendar_event_detail' pk=event.pk %}">
+                                <i class="fa fa-plus g-mr-5"></i>
+                                Зарегистрироваться
+                            </a>
+                        </td>
+                    </tr>
                 {% endfor %}
                 </tbody>
             </table>

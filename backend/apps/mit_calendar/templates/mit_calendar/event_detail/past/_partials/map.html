@@ -1,7 +1,7 @@
 {% load l10n %}
 <div class="g-min-height-400">
     <yandex-map
-            :coords="[{{ event.latitude|unlocalize }}, {{ event.longitude|unlocalize }}]"
+            :coords="[{{ event.place.latitude|unlocalize }}, {{ event.place.longitude|unlocalize }}]"
             zoom="12"
             style="width: 100%; height: 400px;"
     >
@@ -9,10 +9,9 @@
         <ymap-marker
                 marker-id="1"
                 marker-type="placemark"
-                :coords="[{{ event.latitude|unlocalize }}, {{ event.longitude|unlocalize }}]"
-                hint-content="СОШ №265"
-                :balloon="{header: '{{ event.place }}', body: '<strong>Дата и время:</strong> {{ event.date }} в {{ event.time }} <br><strong>Адрес:</strong> {{ event.address }}'}"
-                :options="{iconColor: '{{ event.color }}', preset: 'islands#greenDotIconWithCaption'}"
+                :coords="[{{ event.place.latitude|unlocalize }}, {{ event.place.longitude|unlocalize }}]"
+                hint-content="{{ event.place.title }}"
+                :options="{iconColor: '{{ event.place.color }}', preset: 'islands#greenDotIconWithCaption'}"
                 cluster-name="1"
         ></ymap-marker>
 

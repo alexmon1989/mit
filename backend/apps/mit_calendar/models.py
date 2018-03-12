@@ -1,5 +1,7 @@
+import json
 from django.db import models
 from django.utils import timezone
+from django.template import loader
 from colorful.fields import RGBColorField
 from ckeditor_uploader.fields import RichTextUploadingField
 from backend.abstract_models import TimeStampedModel, SeoModel
@@ -11,17 +13,26 @@ class EventManager(models.Manager):
         """Возвращает категории с is_enabled=True."""
         return super(EventManager, self).get_queryset().filter(is_enabled=True)
 
+    def future(self):
+        """Возвращает категории с is_enabled=True."""
+        return super(EventManager, self).get_queryset().filter(date__gte=timezone.now())
+
+    def past(self):
+        """Возвращает категории с is_enabled=True."""
+        return super(EventManager, self).get_queryset().filter(date__lt=timezone.now())
+
 
 class Event(SeoModel, TimeStampedModel):
     """Модель мероприятия."""
     play = models.ForeignKey(Play, verbose_name='Спектакль', on_delete=models.CASCADE)
     date = models.DateField('Дата')
     time = models.TimeField('Время')
-    place = models.CharField('Место проведения', max_length=255)
-    address = models.CharField('Адрес', max_length=255)
-    latitude = models.FloatField('Широта')
-    longitude = models.FloatField('Долгота')
-    color = RGBColorField('Цвет маркера на карте', default='#FF0000')
+    place = models.ForeignKey(
+        'Place',
+        verbose_name='Место проведения',
+        null=True,
+        on_delete=models.SET_NULL
+    )
     visitors_count = models.PositiveSmallIntegerField('Зрителей допускается', default=25)
     text = RichTextUploadingField('Текст', null=True, blank=True)
     is_enabled = models.BooleanField('Включено', default=True)
@@ -29,7 +40,9 @@ class Event(SeoModel, TimeStampedModel):
     objects = EventManager()
 
     def __str__(self):
-        return self.place
+        if self.place:
+            return '{} {} - {}'.format(self.date, self.time, self.place.title)
+        return 'Событие'
 
     @property
     def is_past_due(self):
@@ -138,3 +151,42 @@ class EventVideo(TimeStampedModel):
     class Meta:
         verbose_name = 'Видео'
         verbose_name_plural = 'Видео'
+
+
+class PlaceManager(models.Manager):
+    def with_future_events(self):
+        """Возвращает категории с is_enabled=True."""
+        return super(PlaceManager, self).get_queryset().filter(event__date__gte=timezone.now())
+
+
+class Place(TimeStampedModel):
+    """Модель места проведения спектаклей."""
+    title = models.CharField('Название места', max_length=255)
+    address = models.CharField('Адрес', max_length=255)
+    latitude = models.FloatField('Широта')
+    longitude = models.FloatField('Долгота')
+    color = RGBColorField('Цвет маркера на карте', default='#FF0000')
+
+    objects = PlaceManager()
+
+    def __str__(self):
+        return '{} ({})'.format(self.title, self.address)
+
+    def get_map_marker_balloon(self):
+        """Возвращает JSON для баллуна метки на карте."""
+        res = {
+            'header': self.title,
+            'body': loader.render_to_string(
+                'mit_calendar/map_marker_balloon.html', {'place': self}
+            )
+        }
+        return json.dumps(res)
+
+    def get_future_events(self):
+        """Возвращает будущие мероприятия в этом месте."""
+        return self.event_set.filter(date__gte=timezone.now()).all()
+
+    class Meta:
+        verbose_name = 'Место'
+        verbose_name_plural = 'Места'
+        ordering = ('title',)

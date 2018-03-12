@@ -10,7 +10,7 @@
         </header>
         <!-- End Heading -->
 
-    {% if past_events_count > 0 %}
+    {% if past_events|length > 0 %}
         <!--Basic Table-->
         <div class="table-responsive">
             <table class="table table-bordered u-table--v2">
@@ -25,32 +25,30 @@
                 </thead>
 
                 <tbody>
-                {% for event in event_list %}
-                    {% if event.is_past_due %}
-                        <tr>
-                            <td class="align-middle" nowrap>
-                                <i class="fa fa-calendar g-mr-1"></i>
-                                <span>{{ event.date }}</span>
-                            </td>
-                            <td class="align-middle" nowrap>
-                                <i class="fa fa-clock-o g-mr-1"></i>
-                                <span>{{ event.time }}</span>
-                            </td>
-                            <td class="align-middle">{{ event.place }}</td>
-                            <td class="align-middle">
-                                <div class="d-flex">
-                                    <i class="fa fa-map-marker g-font-size-18 g-color-gray-dark-v5 g-pos-rel g-top-5 g-mr-7"></i>
-                                    <span>{{ event.address }}</span>
-                                </div>
-                            </td>
-                            <td class="align-middle">
-                                <a class="btn btn-block u-btn-blue g-rounded-50 g-py-5" href="{% url 'calendar_event_detail' pk=event.pk %}">
-                                    <i class="fa fa-eye g-mr-5"></i>
-                                    Смотреть
-                                </a>
-                            </td>
-                        </tr>
-                    {% endif %}
+                {% for event in past_events %}
+                    <tr>
+                        <td class="align-middle" nowrap>
+                            <i class="fa fa-calendar g-mr-1"></i>
+                            <span>{{ event.date }}</span>
+                        </td>
+                        <td class="align-middle" nowrap>
+                            <i class="fa fa-clock-o g-mr-1"></i>
+                            <span>{{ event.time }}</span>
+                        </td>
+                        <td class="align-middle">{{ event.place }}</td>
+                        <td class="align-middle">
+                            <div class="d-flex">
+                                <i class="fa fa-map-marker g-font-size-18 g-color-gray-dark-v5 g-pos-rel g-top-5 g-mr-7"></i>
+                                <span>{{ event.address }}</span>
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <a class="btn btn-block u-btn-blue g-rounded-50 g-py-5" href="{% url 'calendar_event_detail' pk=event.pk %}">
+                                <i class="fa fa-eye g-mr-5"></i>
+                                Смотреть
+                            </a>
+                        </td>
+                    </tr>
                 {% endfor %}
                 </tbody>
             </table>

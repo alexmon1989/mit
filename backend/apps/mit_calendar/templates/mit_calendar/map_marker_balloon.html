@@ -1,0 +1,11 @@
+<h5 class="g-mt-10">Мероприятия:</h5>
+{% for event in place.get_future_events %}
+    <strong>Спектакль:</strong> <a href="{% url 'play' %}">{{ event.play.title }}</a><br>
+    <strong>Дата и время:</strong> {{ event.date }} в {{ event.time }}<br>
+    <strong>Зрителей:</strong> {{ event.get_spectators|length }}/{{ event.visitors_count }}&nbsp;
+    {% if event.get_spectators|length < event.visitors_count %}
+        <a class="g-font-weight-600" href="{% url 'calendar_event_detail' pk=event.pk %}">Зарегистрироваться</a>
+    {% endif %}
+    <br>
+    <br>
+{% endfor %}

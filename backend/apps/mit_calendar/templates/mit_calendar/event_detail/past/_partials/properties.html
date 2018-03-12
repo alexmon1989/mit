@@ -9,11 +9,11 @@
     <dd class="col-sm-7">{{ event.time }}</dd>
 
     <dt class="col-sm-5 text-uppercase">Место проведения</dt>
-    <dd class="col-sm-7">{{ event.place }}</dd>
+    <dd class="col-sm-7">{{ event.place.title }}</dd>
 
 
     <dt class="col-sm-5 text-uppercase">Адрес</dt>
-    <dd class="col-sm-7">{{ event.address }}</dd>
+    <dd class="col-sm-7">{{ event.place.address }}</dd>
 </dl>
 
 {% if event.text %}

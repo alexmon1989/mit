@@ -1,20 +1,20 @@
-from django.views.generic import ListView, DetailView, FormView
+from django.views.generic import TemplateView, DetailView, FormView
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
-from .models import Event
+from .models import Event, Place
 from .forms import SpectatorForm
 
 
-class EventListView(ListView):
+class EventListView(TemplateView):
     """Отображает страницу с расписанием мероприятий."""
-    model = Event
     template_name = 'mit_calendar/calendar/event_list.html'
-    queryset = Event.objects.enabled()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['future_events_count'] = Event.get_future_events_count()
-        context['past_events_count'] = Event.get_past_events_count()
+        context['places'] = Place.objects.with_future_events()
+        context['future_events'] = Event.objects.future()
+        context['past_events'] = Event.objects.past()
+        context['places'] = Place.objects.with_future_events()
         return context
 
 

@@ -12,7 +12,7 @@
                 <i class="g-color-gray-light-v2 g-ml-5">/</i>
             </li>
             <li class="list-inline-item g-color-primary">
-                <span>{% if event.meta_h1 %}{{ event.meta_h1 }}{% else %}{{ event.place }}{% endif %}</span>
+                <span>{% if event.meta_h1 %}{{ event.meta_h1 }}{% else %}{{ event.date }} в {{ event.time }} - {{ event.place.title }}{% endif %}</span>
             </li>
         </ul>
     </div>
