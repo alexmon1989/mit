@@ -61,5 +61,6 @@ class PersonAdmin(admin.ModelAdmin):
 @admin.register(Position)
 class PositionsAdmin(admin.ModelAdmin):
     """Класс для описания интерфейса администрирования должностей."""
-    list_display = ('title', 'created_at', 'updated_at')
+    list_display = ('title', 'weight', 'created_at', 'updated_at')
     search_fields = ('title',)
+    list_editable = ('weight',)
