@@ -13,7 +13,7 @@
                         <img class="img-fluid w-100" src="{{ item.image|thumbnail_url:"news_md" }}" alt="{{ item.title }}">
                     </a>
                     <div class="g-bg-white g-pa-20">
-                        <span class="d-block g-color-gray-dark-v4 g-font-weight-600 g-font-size-12 text-uppercase mb-2">{{ item.created_at|date }}</span>
+                        <span class="d-block g-color-gray-dark-v4 g-font-weight-600 g-font-size-12 text-uppercase mb-2">{{ item.publish_date|date }}</span>
                         <h2 class="h5 g-color-black g-font-weight-600 mb-3">
                             <a class="u-link-v5 g-color-black g-color-primary--hover g-cursor-pointer" href="{% url "news_detail" slug=item.slug %}">{{ item.title }}</a>
                         </h2>

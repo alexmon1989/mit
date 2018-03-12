@@ -13,7 +13,7 @@ class HomeView(TemplateView):
         context = super(HomeView, self).get_context_data(**kwargs)
         context['page_data'] = Home.objects.first()
         context['places'] = Place.objects.with_future_events()
-        context['last_news'] = News.objects.enabled()[:3]
+        context['last_news'] = News.objects.published()[:3]
         if not context['page_data']:
             raise Http404("Home model does not exist.")
         return context

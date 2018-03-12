@@ -1,13 +1,14 @@
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.urls import reverse
+from django.utils import timezone
 from backend.abstract_models import TimeStampedModel, SeoModel
 
 
 class NewsManager(models.Manager):
-    def enabled(self):
+    def published(self):
         """Возвращает новости с is_enabled=True."""
-        return super(NewsManager, self).get_queryset().filter(is_enabled=True)
+        return super(NewsManager, self).get_queryset().filter(is_enabled=True, publish_date__lte=timezone.now())
 
 
 class News(SeoModel, TimeStampedModel):
@@ -29,6 +30,7 @@ class News(SeoModel, TimeStampedModel):
         blank=True,
         help_text='Оптимальный размер: 900px*600px.'
     )
+    publish_date = models.DateTimeField('Дата и время публикации', default=timezone.now)
 
     objects = NewsManager()
 

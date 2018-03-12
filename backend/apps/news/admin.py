@@ -5,12 +5,13 @@ from .models import News
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
     """Класс для описания интерфейса администрирования событий."""
-    list_display = ('title', 'is_enabled', 'created_at', 'updated_at')
+    list_display = ('title', 'is_enabled', 'publish_date', 'created_at', 'updated_at')
     fieldsets = (
         (None, {
             'fields': (
                 'title',
                 'slug',
+                'publish_date',
                 'image',
                 'text',
                 'is_enabled',

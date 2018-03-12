@@ -26,7 +26,7 @@
                         <h3 class="h6 g-mb-2">
                             <a class="g-color-white-opacity-0_8 g-color-white--hover" href="{% url 'news_detail' slug=item.slug %}">{{ item.title }}</a>
                         </h3>
-                        <div class="small g-color-white-opacity-0_6">{{ item.created_at|date }}</div>
+                        <div class="small g-color-white-opacity-0_6">{{ item.publish_date|date }}</div>
                     </article>
 
                     {% if not forloop.last %}

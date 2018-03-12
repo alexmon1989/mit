@@ -38,7 +38,7 @@ def social_links():
 
 @register.simple_tag
 def last_news():
-    return News.objects.enabled().order_by('-created_at')[:3]
+    return News.objects.published().order_by('-created_at')[:3]
 
 
 @register.simple_tag
