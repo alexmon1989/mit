@@ -28,19 +28,21 @@
             {% endfor %}
 
             {% for image in play.get_photos %}
-                <div class="js-slide g-pa-10">
-                    <a class="js-fancybox d-block u-block-hover u-bg-overlay g-bg-black-opacity-0_1--after g-bg-primary-opacity-0_8--hover--after g-transition-0_3"
-                       data-fancybox="lightbox-gallery--10"
-                       href="{{ image.image|thumbnail_url:'play_lg' }}"
-                       title="Увеличить">
-                        <img class="img-fluid" src="{{ image.image|thumbnail_url:'play_sm' }}"
-                             alt="{{ play.title }}">
+                {% if not forloop.first %}
+                    <div class="js-slide g-pa-10">
+                        <a class="js-fancybox d-block u-block-hover u-bg-overlay g-bg-black-opacity-0_1--after g-bg-primary-opacity-0_8--hover--after g-transition-0_3"
+                           data-fancybox="lightbox-gallery--10"
+                           href="{{ image.image|thumbnail_url:'play_lg' }}"
+                           title="Увеличить">
+                            <img class="img-fluid" src="{{ image.image|thumbnail_url:'play_sm' }}"
+                                 alt="{{ play.title }}">
 
-                        <span class="u-block-hover__additional--fade g-color-white g-z-index-2">
-                            <i class="hs-icon hs-icon-magnifier g-absolute-centered g-font-size-25"></i>
-                        </span>
-                    </a>
-                </div>
+                            <span class="u-block-hover__additional--fade g-color-white g-z-index-2">
+                                <i class="hs-icon hs-icon-magnifier g-absolute-centered g-font-size-25"></i>
+                            </span>
+                        </a>
+                    </div>
+                {% endif %}
             {% endfor %}
         </div>
     </div>
