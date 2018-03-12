@@ -54,7 +54,7 @@ class PersonAdmin(admin.ModelAdmin):
     """Класс для описания интерфейса администрирования сотрудников."""
     list_display = ('name', 'position', 'created_at', 'updated_at')
     ordering = ('name',)
-    search_fields = ('name', 'position')
+    search_fields = ('name', 'position__title')
     list_filter = ('position',)
 
 
