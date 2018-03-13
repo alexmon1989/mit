@@ -100,7 +100,7 @@ class Event(SeoModel, TimeStampedModel):
     class Meta:
         verbose_name = 'Событие'
         verbose_name_plural = 'События'
-        ordering = ('date',)
+        ordering = ('date', 'time')
 
 
 class Spectator(TimeStampedModel):
