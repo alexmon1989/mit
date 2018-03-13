@@ -1,5 +1,6 @@
 import json
 from django.db import models
+from django.db.models import Count
 from django.utils import timezone
 from django.template import loader
 from colorful.fields import RGBColorField
@@ -182,17 +183,24 @@ class Place(TimeStampedModel):
 
     def get_map_marker_balloon(self):
         """Возвращает JSON для баллуна метки на карте."""
+        future_events = self.get_future_events().annotate(Count('spectator'))
+
         res = {
             'header': self.title,
             'body': loader.render_to_string(
-                'mit_calendar/map_marker_balloon.html', {'place': self}
+                'mit_calendar/map_marker_balloon.html', {
+                    'place': self,
+                    'future_events': future_events
+                }
             )
         }
         return json.dumps(res)
 
     def get_future_events(self):
         """Возвращает будущие мероприятия в этом месте."""
-        return self.event_set.filter(date__gte=timezone.now()).all()
+        return self.event_set.filter(date__gte=timezone.now()).values(
+            'pk', 'play__title', 'date', 'time', 'visitors_count'
+        )
 
     class Meta:
         verbose_name = 'Место'

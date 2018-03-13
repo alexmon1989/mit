@@ -1,6 +1,7 @@
 from django.views.generic import TemplateView, DetailView, FormView
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
+from django.db.models import Count
 from .models import Event, Place
 from .forms import SpectatorForm
 
@@ -12,7 +13,11 @@ class EventListView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['places'] = Place.objects.with_future_events()
-        context['future_events'] = Event.objects.future()
+        context['future_events'] = Event.objects.future().values(
+            'pk', 'date', 'time', 'place__title', 'place__address', 'visitors_count'
+        ).annotate(Count('spectator'))
+        for event in context['future_events']:
+            event['spectator__percent'] = int(event['spectator__count'] / event['visitors_count'] * 100)
         context['past_events'] = Event.objects.past()
         context['places'] = Place.objects.with_future_events()
         return context
