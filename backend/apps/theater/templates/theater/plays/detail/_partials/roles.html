@@ -11,14 +11,14 @@
 
 <!-- Team Block -->
 <div class="row">
-    {% for role in play.personplayrole_set.all %}
+    {% for role in roles %}
         <div class="col-sm-4 g-mb-40">
             <!-- Figure -->
             <figure class="text-center">
                 <!-- Figure Image -->
                 <div class="d-block mx-auto rounded-circle g-max-width-200 g-bg-white g-pa-5 g-mb-15">
-                    {% if role.person.image %}
-                        <img class="rounded-circle g-max-width-190" src="{{ role.person.image|thumbnail_url:'avatar_sq' }}" alt="{{ role.person.name }}">
+                    {% if role.person__image %}
+                        <img class="rounded-circle g-max-width-190" src="{{ role.person__image|thumbnail_url:'avatar_sq' }}" alt="{{ role.person__name }}">
                     {% else %}
                         <img class="rounded-circle g-max-width-190" src="//via.placeholder.com/400x400?text=No+Image" alt="No image">
                     {% endif %}
@@ -27,7 +27,7 @@
 
                 <!-- Figure Info -->
                 <div class="g-mb-10">
-                    <h4 class="h4 g-color-black g-mb-5">{{ role.person.name }}</h4>
+                    <h4 class="h4 g-color-black g-mb-5">{{ role.person__name }}</h4>
                     <em class="d-block g-font-style-normal g-font-size-11 text-uppercase g-color-primary">{{ role.role }}</em>
                 </div>
                 <p class="g-px-30 g-color-black-opacity-0_7">{{ role.text }}</p>
