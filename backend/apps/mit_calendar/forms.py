@@ -13,7 +13,9 @@ class SpectatorForm(ModelForm):
             'mit_calendar/event_detail/future/emails/spectator.html',
             {
                 'event': self.cleaned_data['event'],
-                'username': self.cleaned_data['username'],
+                'first_name': self.cleaned_data['first_name'],
+                'last_name': self.cleaned_data['last_name'],
+                'patronymic_name': self.cleaned_data['patronymic_name'],
                 'phone': self.cleaned_data['phone'],
                 'email': self.cleaned_data['email'],
             }
@@ -32,7 +34,9 @@ class SpectatorForm(ModelForm):
             'mit_calendar/event_detail/future/emails/manager.html',
             {
                 'event': self.cleaned_data['event'],
-                'username': self.cleaned_data['username'],
+                'first_name': self.cleaned_data['first_name'],
+                'last_name': self.cleaned_data['last_name'],
+                'patronymic_name': self.cleaned_data['patronymic_name'],
                 'phone': self.cleaned_data['phone'],
                 'email': self.cleaned_data['email'],
             }
@@ -48,4 +52,4 @@ class SpectatorForm(ModelForm):
 
     class Meta:
         model = Spectator
-        fields = ('event', 'username', 'phone', 'email')
+        fields = ('event', 'first_name', 'last_name', 'patronymic_name', 'phone', 'email')

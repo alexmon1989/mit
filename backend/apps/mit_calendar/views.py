@@ -27,7 +27,9 @@ class EventDetailView(DetailView, FormView):
     def get_form(self, form_class=None):
         """Создаёт объёкт формы."""
         data = {
-            'username': self.request.POST.get('username'),
+            'first_name': self.request.POST.get('first_name'),
+            'last_name': self.request.POST.get('last_name'),
+            'patronymic_name': self.request.POST.get('patronymic_name'),
             'phone': self.request.POST.get('phone'),
             'email': self.request.POST.get('email'),
             'event': self.kwargs.get('pk'),

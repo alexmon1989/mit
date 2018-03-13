@@ -99,17 +99,19 @@ class Event(SeoModel, TimeStampedModel):
 class Spectator(TimeStampedModel):
     """Модель зрителя мероприятия."""
     event = models.ForeignKey(Event, verbose_name='Событие', on_delete=models.CASCADE)
-    username = models.CharField('Имя', max_length=255)
+    first_name = models.CharField('Имя', max_length=255)
+    last_name = models.CharField('Фамилия', max_length=255, default='')
+    patronymic_name = models.CharField('Отчество', max_length=255, default='')
     phone = models.CharField('Телефон', max_length=255)
     email = models.EmailField('E-Mail', max_length=255)
 
     def __str__(self):
-        return self.username
+        return '{} {} {}'.format(self.last_name, self.first_name, self.patronymic_name)
 
     class Meta:
         verbose_name = 'Зритель'
         verbose_name_plural = 'Зрители'
-        ordering = ('username',)
+        ordering = ('last_name',)
 
 
 class EventPhoto(TimeStampedModel):

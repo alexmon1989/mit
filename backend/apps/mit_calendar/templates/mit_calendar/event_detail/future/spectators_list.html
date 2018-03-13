@@ -5,6 +5,6 @@
 <strong>Список зарегистрированных зрителей:</strong>
 <ol>
     {% for spectator in event.get_spectators %}
-        <li><strong>{{ spectator.username }}</strong> | {{ spectator.phone }} | {{ spectator.email }} </li>
+        <li><strong>{{ spectator.last_name }} {{ spectator.first_name }} {{ spectator.patronymic_name }}</strong> | {{ spectator.phone }} | {{ spectator.email }} </li>
     {% endfor %}
 </ol>
