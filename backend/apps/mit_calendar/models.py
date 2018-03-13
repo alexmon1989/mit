@@ -35,6 +35,12 @@ class Event(SeoModel, TimeStampedModel):
     )
     visitors_count = models.PositiveSmallIntegerField('Зрителей допускается', default=25)
     text = RichTextUploadingField('Текст', null=True, blank=True)
+    registration_closed = models.BooleanField(
+        'Закрыть возможность регистрации',
+        default=False,
+        help_text='Принудительно запретить возможность регистрации посетителей на мероприятие, '
+                  'в незавсимости от кол-ва уже зарегистрированных персон.'
+    )
     is_enabled = models.BooleanField('Включено', default=True)
 
     objects = EventManager()
@@ -86,7 +92,7 @@ class Event(SeoModel, TimeStampedModel):
     @property
     def is_registration_open(self):
         """Открыта ли регистрация на мероприятие."""
-        if self.is_past_due or len(self.get_spectators()) >= self.visitors_count:
+        if self.registration_closed or self.is_past_due or len(self.get_spectators()) >= self.visitors_count:
             return False
         return True
 

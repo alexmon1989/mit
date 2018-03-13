@@ -47,8 +47,8 @@ class SpectatorForm(ModelForm):
         """Проверка есть ли свободные места для зриетлей."""
         cleaned_data = super().clean()
         event = cleaned_data.get('event')
-        if len(event.get_spectators()) >= event.visitors_count:
-            raise forms.ValidationError("Свободных мест для зрителей не осталось.")
+        if not event.is_registration_open:
+            raise forms.ValidationError("Регистрация закрыта.")
 
     class Meta:
         model = Spectator
