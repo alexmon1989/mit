@@ -45,7 +45,11 @@ class Migration(migrations.Migration):
             model_name='event',
             name='longitude',
         ),
-        migrations.AlterField(
+        migrations.RemoveField(
+            model_name='event',
+            name='place',
+        ),
+        migrations.AddField(
             model_name='event',
             name='place',
             field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='mit_calendar.Place', verbose_name='Место проведения'),
