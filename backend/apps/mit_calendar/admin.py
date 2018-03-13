@@ -20,7 +20,8 @@ class SpectatorInline(admin.TabularInline):
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
     """Класс для описания интерфейса администрирования событий."""
-    list_display = ('play', 'date', 'time', 'place', 'registration_closed', 'is_enabled', 'created_at', 'updated_at')
+    list_display = ('play', 'date', 'time', 'place', 'registered_spectators_count',
+                    'registration_closed', 'is_enabled', 'created_at', 'updated_at')
     fieldsets = (
         (None, {
             'fields': (
@@ -43,6 +44,11 @@ class EventAdmin(admin.ModelAdmin):
     search_fields = ('play__title', 'place', 'address')
     list_editable = ('registration_closed', 'is_enabled',)
     inlines = (SpectatorInline, EventPhotoInline, EventVideoInline)
+
+    def registered_spectators_count(self, obj):
+        return '{}/{}'.format(len(obj.get_spectators()), obj.visitors_count)
+
+    registered_spectators_count.short_description = 'Зрители'
 
 
 @admin.register(Place)
