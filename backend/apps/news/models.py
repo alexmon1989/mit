@@ -43,4 +43,4 @@ class News(SeoModel, TimeStampedModel):
     class Meta:
         verbose_name = 'Новость'
         verbose_name_plural = 'Новости'
-        ordering = ('-created_at',)
+        ordering = ('-publish_date',)
