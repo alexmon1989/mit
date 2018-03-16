@@ -1,3 +1,4 @@
+import "babel-polyfill";
 import Vue from 'vue';
 import { yandexMap, ymapMarker } from 'vue-yandex-maps'
 import VeeValidate, {Validator} from 'vee-validate';
@@ -10,6 +11,7 @@ Vue.use(VeeValidate, {
 
 import ContactForm from './vue-components/ContactForm.vue';
 import EventRegistrationForm from './vue-components/EventRegistrationForm.vue';
+import Gallery from './vue-components/Gallery.vue';
 
 new Vue({
     el: '#app',
@@ -17,6 +19,7 @@ new Vue({
         yandexMap,
         ymapMarker,
         ContactForm: ContactForm,
-        EventRegistrationForm: EventRegistrationForm
+        EventRegistrationForm: EventRegistrationForm,
+        Gallery: Gallery,
     }
 });

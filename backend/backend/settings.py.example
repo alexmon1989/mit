@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'easy_thumbnails',
     'colorful',
+    'corsheaders',
     'apps.theater.apps.TheaterConfig',
     'apps.mit_calendar.apps.MitCalendarConfig',
     'apps.news.apps.NewsConfig',
@@ -49,12 +50,14 @@ INSTALLED_APPS = [
     'apps.about.apps.AboutConfig',
     'apps.home.apps.HomeConfig',
     'apps.settings.apps.SettingsConfig',
+    'apps.photo_archive.apps.PhotoArchiveConfig',
 ]
 
 MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -228,3 +231,5 @@ SERVER_EMAIL = 'theater.b3hak@gmail.com'
 
 ADMINS = [('Alex', 'alex.mon1989@gmail.com'), ]
 MANAGERS = [('Alex', 'alex.mon1989@gmail.com'), ]
+
+CORS_ORIGIN_ALLOW_ALL = True

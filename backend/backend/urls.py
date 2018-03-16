@@ -26,6 +26,7 @@ urlpatterns = [
     path('news/', include('apps.news.urls')),
     path('contacts/', include('apps.contacts.urls')),
     path('about/', include('apps.about.urls')),
+    path('photo-archive/', include('apps.photo_archive.urls')),
     re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]
 
