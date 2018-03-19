@@ -1,6 +1,6 @@
 from django.http import JsonResponse, Http404
 from django.views.generic.base import TemplateView
-from django.db.models import Count
+from django.db.models import Count, Q
 from easy_thumbnails.files import get_thumbnailer
 from apps.mit_calendar.models import EventPhoto
 from .models import Like, Page
@@ -36,4 +36,14 @@ def photos(request):
 
 
 def like(request):
-    pass
+    """Обрабатывает запрос на лайк фотографии."""
+    photo = EventPhoto.objects.filter(
+        is_visible=True,
+        pk=request.POST.get('id')
+    ).exclude(like__ip=get_client_ip(request)).first()
+
+    if not photo:
+        return JsonResponse({'error': 1}, status=400)
+
+    Like.objects.create(ip=get_client_ip(request), photo=photo)
+    return JsonResponse({'success': 1})

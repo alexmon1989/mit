@@ -1,14 +1,22 @@
 <template>
-    <div class="row">
-        <div class="col-md-3 g-mb-30" v-for="item in sortedItems">
-            <gallery-item
-                    :id="item.id"
-                    :imgSm="item.img_sm"
-                    :imgLg="item.img_lg"
-                    :likesCount="item.likes_count"
-                    :canLike="item.can_like"
-                    @incLikes="incLikes(item.id)"
-            />
+    <div>
+        <div class="row" v-if="sortedItems.length > 0">
+            <div class="col-md-3 g-mb-30" v-for="item in sortedItems">
+                <gallery-item
+                        :id="item.id"
+                        :imgSm="item.img_sm"
+                        :imgLg="item.img_lg"
+                        :likesCount="item.likes_count"
+                        :canLike="item.can_like"
+                        @incLikes="incLikes(item.id)"
+                />
+            </div>
+        </div>
+        <div class="row" v-else>
+            <div class="col-12 text-center g-font-size-18 g-font-weight-600">
+                <p v-if="busy">Загрузка фотографий...</p>
+                <p v-else>Фотографии пока что отсутствуют.</p>
+            </div>
         </div>
     </div>
 </template>

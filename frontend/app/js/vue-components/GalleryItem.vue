@@ -22,6 +22,9 @@
 </template>
 
 <script>
+    import axios from '../config-axios';
+    import qs from 'qs';
+
     export default {
         props: ['id', 'imgSm', 'imgLg', 'likesCount', 'canLike'],
         name: "gallery-item",
@@ -35,7 +38,12 @@
         },
         methods: {
             like() {
-                this.$emit('incLikes', this.id)
+                axios.post('/photo-archive/like/', qs.stringify({ id: this.id }))
+                    .then(() => {
+                        this.$emit('incLikes', this.id)
+                    }).catch(function (error) {
+                    console.log(error);
+                });
             }
         }
     }
