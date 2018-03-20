@@ -17,6 +17,14 @@ from django.contrib import admin
 from django.urls import path, re_path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.sitemaps.views import sitemap
+from .sitemaps import StaticViewSitemap, NewsSitemap, EventSitemap
+
+sitemaps = {
+    'static': StaticViewSitemap,
+    'news': NewsSitemap,
+    'events': EventSitemap,
+}
 
 urlpatterns = [
     path('', include('apps.home.urls')),
@@ -27,6 +35,7 @@ urlpatterns = [
     path('contacts/', include('apps.contacts.urls')),
     path('about/', include('apps.about.urls')),
     path('photo-archive/', include('apps.photo_archive.urls')),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps},name='django.contrib.sitemaps.views.sitemap'),
     re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]
 

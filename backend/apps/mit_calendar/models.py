@@ -1,4 +1,5 @@
 import json
+from django.urls import reverse
 from django.db import models
 from django.db.models import Count
 from django.utils import timezone
@@ -96,6 +97,9 @@ class Event(SeoModel, TimeStampedModel):
         if self.registration_closed or self.is_past_due or len(self.get_spectators()) >= self.visitors_count:
             return False
         return True
+
+    def get_absolute_url(self):
+        return reverse('calendar_event_detail', args=[self.pk])
 
     class Meta:
         verbose_name = 'Событие'
