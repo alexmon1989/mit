@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="row" v-if="sortedItems.length > 0">
-            <div class="col-md-3 g-mb-30" v-for="item in sortedItems">
+            <div class="col-6 col-md-3 g-mb-30" v-for="item in sortedItems">
                 <gallery-item
                         :id="item.id"
                         :imgSm="item.img_sm"

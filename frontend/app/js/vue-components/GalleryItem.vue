@@ -4,11 +4,11 @@
             <img class="img-fluid u-block-hover__main--zoom-v1" :src="imgSm" alt="">
         </figure>
         <div v-if="canLike" class="u-bg-overlay__inner g-absolute-centered">
-            <a @click.prevent="like" href="#!" class="btn btn-xxl u-btn-primary g-mr-10 g-mb-15">
+            <a @click.prevent="like" href="#!" class="btn btn-lg u-btn-primary">
                 <i class="fa fa-thumbs-up"></i>
             </a>
         </div>
-        <ul class="list-inline u-bg-overlay__inner g-pos-abs g-bottom-10 g-left-30 g-opacity-0_8">
+        <ul class="list-inline u-bg-overlay__inner g-pos-abs g-bottom-0 g-left-10 g-opacity-0_8">
             <li class="list-inline-item" :class="classObject">
                 <i class="fa fa-thumbs-up g-font-size-18" aria-hidden="true"></i> {{ likesCount }}
             </li>
