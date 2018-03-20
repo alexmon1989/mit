@@ -19,13 +19,13 @@
                             <a class="js-fancybox"
                                href="javascript:;"
                                data-fancybox="lightbox-gallery--07-1"
-                               data-src="{{ photo.image|thumbnail_url:"news_lg" }}"
+                               data-src="{{ photo.image|thumbnail_url:"main_page_gallery_item_lg" }}"
                                data-caption=""
                                data-animate-in="bounceInDown"
                                data-animate-out="bounceOutDown"
                                data-speed="1000"
                                data-overlay-blur-bg="true">
-                                <img class="img-fluid g-rounded-6" src="{{ photo.image|thumbnail_url:"news_md" }}" alt="">
+                                <img class="img-fluid g-rounded-6" src="{{ photo.image|thumbnail_url:"main_page_gallery_item_sm" }}" alt="">
                             </a>
                         </div>
                     {% endfor %}
