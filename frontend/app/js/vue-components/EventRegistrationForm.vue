@@ -120,6 +120,7 @@
             <div class="row justify-content-center g-mt-20">
                 <div class="col-md-3">
                     <button class="btn btn-block btn-md u-btn-primary text-uppercase g-font-size-14 g-font-weight-600 g-rounded-5 g-py-12"
+                            :disabled="processing"
                             type="submit">Зарегистрироваться
                     </button>
                 </div>
