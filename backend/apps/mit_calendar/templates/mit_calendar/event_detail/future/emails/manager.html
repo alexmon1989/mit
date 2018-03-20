@@ -65,7 +65,7 @@
                             </tr>
                             <tr>
                                 <td class="center" style="font-size: 14px; color: #303030; font-family: Arial, Helvetica, sans-serif; line-height: 25px; vertical-align: middle; padding: 20px 50px 20px; " >
-                                    Мероприятие: <a href="https://театр-мягкийзнак.рф{% url 'calendar_event_detail' pk=event.pk %}">{{ event.place }}</a> ({{ event.date }})<br/>
+                                    Мероприятие: <a href="https://театр-мягкийзнак.рф{% url 'calendar_event_detail' pk=event.pk %}">{{ event.place }}</a> ({{ event.date }} в {{ event.time }})<br/>
                                     ФИО: <strong>{{ last_name }} {{ first_name }} {{ patronymic_name }}</strong><br/>
                                     Телефон: <strong>{{ phone }}</strong><br/>
                                     E-Mail: <strong><a href="mailto:{{ email }}">{{ email }}</a></strong>
