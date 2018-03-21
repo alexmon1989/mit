@@ -30,9 +30,16 @@
      }]'>
         {% for partner in partners %}
             <div class="js-slide g-brd-around g-brd-gray-light-v3--hover g-transition-0_2 rounded g-pa-5 g-mx-10">
-                <img class="mx-auto g-width-200" src="{{ partner.image|thumbnail_url:"partner" }}"
-                     title="{{ partner.title }}"
-                     alt="{{ partner.title }}">
+                {% if partner.url %}
+                    <a href="{{ partner.url }}" target="_blank" rel="noopener"><img class="mx-auto g-width-200"
+                                                                                    src="{{ partner.image|thumbnail_url:"partner" }}"
+                                                                                    title="{{ partner.title }}"
+                                                                                    alt="{{ partner.title }}"></a>
+                {% else %}
+                    <img class="mx-auto g-width-200" src="{{ partner.image|thumbnail_url:"partner" }}"
+                         title="{{ partner.title }}"
+                         alt="{{ partner.title }}">
+                {% endif %}
             </div>
         {% endfor %}
     </div>

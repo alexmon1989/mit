@@ -12,6 +12,7 @@ class Partner(TimeStampedModel):
         upload_to='partners',
         help_text='Оптимальный размер: 200px*100px.'
     )
+    url = models.URLField('Ссылка', null=True, blank=True)
     is_enabled = models.BooleanField('Включено', default=True)
 
     def __str__(self):
