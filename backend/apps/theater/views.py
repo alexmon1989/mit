@@ -20,7 +20,8 @@ class PlayDetailView(DetailView):
         context = super(PlayDetailView, self).get_context_data(**kwargs)
 
         context['future_events'] = Event.objects.future().values(
-            'pk', 'date', 'time', 'place__title', 'place__address', 'visitors_count'
+            'pk', 'date', 'time', 'place__title', 'place__address', 'visitors_count', 'registration_closed',
+            'show_full_visitors'
         ).annotate(Count('spectator')).filter(play=self.object)
         for event in context['future_events']:
             event['spectator__percent'] = int(event['spectator__count'] / event['visitors_count'] * 100)
