@@ -21,11 +21,11 @@
         <div class="progress rounded-0 g-overflow-visible g-mb-20">
             <div class="progress-bar"
                  role="progressbar"
-                 style="width: {{ event.get_spectators_percent }}%;"
-                 aria-valuenow="{{ event.get_spectators|length }}"
+                 style="width: {% if event.registration_closed and event.show_full_visitors %}100{% else %}{{ event.get_spectators_percent }}{% endif %}%;"
+                 aria-valuenow="{% if event.registration_closed and event.show_full_visitors %}{{ event.visitors_count }}{% else %}{{ event.get_spectators|length }}{% endif %}"
                  aria-valuemin="0"
                  aria-valuemax="{{ event.visitors_count }}">
-                <div class="pull-right g-font-size-11 g-px-5">{{ event.get_spectators|length }}/{{ event.visitors_count }}</div>
+                <div class="pull-right g-font-size-11 g-px-5">{% if event.registration_closed and event.show_full_visitors %}{{ event.visitors_count }}/{{ event.visitors_count }}{% else %}{{ event.get_spectators|length }}/{{ event.visitors_count }}{% endif %}</div>
             </div>
         </div>
     </dd>

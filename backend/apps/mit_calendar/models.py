@@ -43,6 +43,11 @@ class Event(SeoModel, TimeStampedModel):
         help_text='Принудительно запретить возможность регистрации посетителей на мероприятие, '
                   'в незавсимости от кол-ва уже зарегистрированных персон.'
     )
+    show_full_visitors = models.BooleanField(
+        'Показывать полную заполненность зрителями',
+        default=False,
+        help_text='Работает только если включена галочка "Закрыть возможность регистрации"'
+    )
     is_enabled = models.BooleanField('Включено', default=True)
 
     objects = EventManager()

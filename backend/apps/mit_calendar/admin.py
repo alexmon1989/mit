@@ -32,6 +32,7 @@ class EventAdmin(admin.ModelAdmin):
                 'visitors_count',
                 'text',
                 'registration_closed',
+                'show_full_visitors',
                 'is_enabled',
             )
         }),

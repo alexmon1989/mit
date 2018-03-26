@@ -14,11 +14,14 @@ class EventListView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['places'] = Place.objects.with_future_events()
         context['future_events'] = Event.objects.future().values(
-            'pk', 'date', 'time', 'place__title', 'place__address', 'visitors_count'
+            'pk', 'date', 'time', 'place__title', 'place__address', 'visitors_count', 'registration_closed',
+            'show_full_visitors'
         ).annotate(Count('spectator'))
         for event in context['future_events']:
             event['spectator__percent'] = int(event['spectator__count'] / event['visitors_count'] * 100)
-        context['past_events'] = Event.objects.past()
+        context['past_events'] = Event.objects.past().values(
+            'pk', 'date', 'time', 'place__title', 'place__address', 'visitors_count'
+        )
         context['places'] = Place.objects.with_future_events()
         return context
 
