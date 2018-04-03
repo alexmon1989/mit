@@ -161,7 +161,8 @@ gulp.task('nunjucks', function () {
         './app/nunjucks/pages/play/play.njk',
         './app/nunjucks/pages/event/future/future_event.njk',
         './app/nunjucks/pages/event/past/past_event.njk',
-        './app/nunjucks/pages/photo_archive/photo_archive.njk'
+        './app/nunjucks/pages/photo_archive/list/photo_archive_list.njk',
+        './app/nunjucks/pages/photo_archive/detail/photo_archive_detail.njk'
     ])
         .pipe(njkRender())
         .pipe(htmlbeautify({

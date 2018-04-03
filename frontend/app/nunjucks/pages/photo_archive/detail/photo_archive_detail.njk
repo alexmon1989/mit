@@ -1,0 +1,15 @@
+{% set title = "Фотоархив" %}
+{% set active_menu = "photo_archive" %}
+
+{% extends "app/nunjucks/layout/base.njk" %}
+
+{% block content %}
+    <!-- Promo Block -->
+    {% include "app/nunjucks/pages/photo_archive/list/_partials/breadcrumbs.njk" %}
+    <!-- End Promo Block -->
+
+    <section class="container g-pt-100 g-pb-40">
+
+        <gallery event-id="1"/>
+    </section>
+{% endblock %}

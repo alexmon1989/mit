@@ -1,0 +1,19 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Фотографии с мероприятия - {{ event.date }} в {{ event.time }} - {{ event.place.title }}{% endblock %}
+{% block keywords %}{% endblock %}
+{% block description %}Фотографии со спектакля  &quot;В гостях у Ивана&quot; севастопольского театра &quot;Мягкий знак&quot;, которое прошло {{ event.date }} в {{ event.time }} в {{ event.place.title }}.{% endblock %}
+
+{% block content %}
+
+    <!-- Breadcrumbs Block -->
+    {% include 'photo_archive/detail/_partials/breadcrumbs.html' %}
+    <!-- End Breadcrumbs Block -->
+
+    <section class="container g-pt-100 g-pb-40">
+        <!-- Photos Block -->
+        <gallery event-id="{{ event.pk }}" />
+        <!-- End Photos Block -->
+    </section>
+
+{% endblock %}

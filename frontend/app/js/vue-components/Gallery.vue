@@ -30,6 +30,7 @@
         components: {
             GalleryItem: GalleryItem,
         },
+        props: ['eventId'],
         data() {
             return {
                 items: [],
@@ -47,7 +48,7 @@
         },
         methods: {
             load() {
-                axios.get('/photo-archive/photos.json')
+                axios.get('/photo-archive/photos.json?event_id=' + this.eventId)
                     .then((response) => {
                         this.items = response.data;
                         this.busy = false;

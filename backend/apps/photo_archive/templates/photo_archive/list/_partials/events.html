@@ -1,0 +1,25 @@
+{% load thumbnail %}
+
+<div class="row text-center">
+    {% if not no_photo %}
+        {% for event in events %}
+            {% if event.photo %}
+                <div class="col-6 col-lg-4 g-mb-30">
+                    <a href="{% url 'photo_archive_gallery' pk=event.pk %}"
+                       class="d-block u-block-hover u-bg-overlay g-bg-black-opacity-0_5--after g-rounded-6">
+                        <img src="{{ event.photo.image|thumbnail_url:'gallery_item_sm' }}"
+                             alt="{{ event.date }} в {{ event.time }} - {{ event.place__title }}"
+                             class="img-fluid u-block-hover__main--zoom-v1">
+                        <strong
+                                class="h5 d-block w-100 u-bg-overlay__inner g-absolute-centered g-px-20 g-font-weight-400 g-color-white g-mt-10"
+                        ><i class="h6 g-color-white-opacity-0_8">{{ event.date }} в {{ event.time }}</i><br>{{ event.place__title }}</strong>
+                    </a>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <div class="col-12 text-center g-font-size-18 g-font-weight-600">
+            <p>Фотографии пока что отсутствуют.</p>
+        </div>
+    {% endif %}
+</div>

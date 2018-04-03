@@ -1,27 +1,50 @@
 from django.http import JsonResponse, Http404
 from django.views.generic.base import TemplateView
-from django.db.models import Count, Q
+from django.views.generic import DetailView
+from django.db.models import Count
 from easy_thumbnails.files import get_thumbnailer
-from apps.mit_calendar.models import EventPhoto
 from .models import Like, Page
+from apps.mit_calendar.models import Event, EventPhoto
 from .utils import get_client_ip
 
 
-class PageView(TemplateView):
+class GalleryListView(TemplateView):
     """Отображает страницу Фотоархив."""
-    template_name = 'photo_archive/photo_archive.html'
+    template_name = 'photo_archive/list/photo_archive.html'
 
     def get_context_data(self, **kwargs):
-        context = super(PageView, self).get_context_data(**kwargs)
+        context = super(GalleryListView, self).get_context_data(**kwargs)
         context['page_data'] = Page.objects.first()
         if not context['page_data']:
             raise Http404("Page model does not exist.")
+        context['events'] = Event.objects.past().values(
+            'pk', 'date', 'time', 'place__title'
+        )
+        context['no_photo'] = True
+        for event in context['events']:
+            event['photo'] = EventPhoto.objects.filter(is_visible=True, event_id=event['pk']).first()
+            if context['no_photo'] and event['photo']:
+                context['no_photo'] = False
         return context
+
+
+class GalleryDetailView(DetailView):
+    """Отображает страницу галереи мероприятия в разделе Фотоархив"""
+    model = Event
+    queryset = Event.objects.past()
+    template_name = 'photo_archive/detail/gallery.html'
 
 
 def photos(request):
     """Возвращает JSON со всеми фотографиями со спектаклей."""
-    photos_list = EventPhoto.objects.filter(is_visible=True).values('id', 'image').annotate(Count('like'))
+    try:
+        event_id = int(request.GET.get('event_id'))
+    except (ValueError, TypeError):
+        return JsonResponse({'error': 1}, status=400)
+    photos_list = EventPhoto.objects.filter(
+        is_visible=True,
+        event_id=event_id
+    ).values('id', 'image').annotate(Count('like'))
     liked_ids = Like.objects.filter(ip=get_client_ip(request)).values_list('photo_id', flat=True)
     data = []
     for photo in photos_list:

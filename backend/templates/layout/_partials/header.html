@@ -45,7 +45,7 @@
                             <a href="{% url 'calendar_event_list' %}" class="nav-link g-py-7 g-px-0">Календарь</a>
                         </li>
 
-                        <li class="nav-item g-mx-10--lg g-mx-15--xl {% if request.resolver_match.url_name == 'photo_archive' %}active{% endif %}">
+                        <li class="nav-item g-mx-10--lg g-mx-15--xl {% if request.resolver_match.url_name|in_list:'photo_archive,photo_archive_gallery' %}active{% endif %}">
                             <a href="{% url 'photo_archive' %}" class="nav-link g-py-7 g-px-0">Фотоархив</a>
                         </li>
 

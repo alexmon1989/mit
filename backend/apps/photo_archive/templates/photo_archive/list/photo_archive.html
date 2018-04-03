@@ -1,13 +1,13 @@
 {% extends 'layout/base.html' %}
 
-{% block title %}{% if page_data.meta_title %}{{ page_data.meta_title }}{% else %}О нас{% endif %}{% endblock %}
+{% block title %}{% if page_data.meta_title %}{{ page_data.meta_title }}{% else %}Фотоархив{% endif %}{% endblock %}
 {% block keywords %}{{ page_data.meta_keywords|default_if_none:'' }}{% endblock %}
 {% block description %}{{ page_data.meta_description|default_if_none:'' }}{% endblock %}
 
 {% block content %}
 
     <!-- Breadcrumbs Block -->
-    {% include 'photo_archive/_partials/breadcrumbs.html' %}
+    {% include 'photo_archive/list/_partials/breadcrumbs.html' %}
     <!-- End Breadcrumbs Block -->
 
     <section class="container g-pt-100 g-pb-40">
@@ -21,7 +21,9 @@
             </div>
         </header>
 
-        <gallery />
+        <!-- Events Block -->
+        {% include 'photo_archive/list/_partials/events.html' %}
+        <!-- End Events Block -->
     </section>
 
 {% endblock %}

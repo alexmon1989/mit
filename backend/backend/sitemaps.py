@@ -38,3 +38,18 @@ class NewsSitemap(sitemaps.Sitemap):
 
     def lastmod(self, obj):
         return obj.updated_at
+
+
+class GallerySitemap(sitemaps.Sitemap):
+    """Карта сайта для галерей."""
+    changefreq = 'daily'
+    priority = 0.6
+
+    def items(self):
+        return Event.objects.past()
+
+    def lastmod(self, obj):
+        return obj.updated_at
+
+    def location(self, obj):
+        return reverse('photo_archive_gallery', args=(obj.pk,))

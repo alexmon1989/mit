@@ -220,6 +220,7 @@ THUMBNAIL_ALIASES = {
         'partner': {'size': (200, 100), 'crop': False},
         'main_page_gallery_item_sm': {'size': (540, 360), 'crop': True},
         'main_page_gallery_item_lg': {'size': (900, 600), 'crop': False},
+        'gallery_item_sm': {'size': (400, 270), 'crop': True},
     },
 }
 
