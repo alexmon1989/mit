@@ -1,118 +1,120 @@
 {% load staticfiles %}
 {% load project_tags %}
 
-<div class="g-bg-black-opacity-0_9 g-color-white-opacity-0_8 g-py-60">
-    <div class="container">
-        <div class="row">
-            <!-- Footer Content -->
-            <div class="col-lg-3 col-md-6 g-mb-40 g-mb-0--lg">
-                <a class="d-block g-mb-20" href="/">
-                    <img class="img-fluid" src="{% static 'img/logo/logo-2.png' %}" alt="Logo">
-                </a>
-                <p>Мобильный интерактивный театр "Мягкий знак" - спектакли по всему Севастополю.</p>
+<div id="footer">
+    <div class="g-bg-black-opacity-0_9 g-color-white-opacity-0_8 g-py-60">
+        <div class="container">
+            <div class="row">
+                <!-- Footer Content -->
+                <div class="col-lg-3 col-md-6 g-mb-40 g-mb-0--lg">
+                    <a class="d-block g-mb-20" href="/">
+                        <img class="img-fluid" src="{% static 'img/logo/logo-2.png' %}" alt="Logo">
+                    </a>
+                    <p>Мобильный интерактивный театр "Мягкий знак" - спектакли по всему Севастополю.</p>
 
-            </div>
-            <!-- End Footer Content -->
-
-            <!-- Footer Content -->
-            <div class="col-lg-3 col-md-6 g-mb-40 g-mb-0--lg">
-                <div class="u-heading-v3-1 g-brd-white-opacity-0_3 g-mb-25">
-                    <h2 class="u-heading-v3__title h6 text-uppercase g-brd-primary">Последние новости</h2>
                 </div>
+                <!-- End Footer Content -->
 
-                {% last_news as last_news %}
-                {% for item in last_news %}
-                    <article>
-                        <h3 class="h6 g-mb-2">
-                            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="{% url 'news_detail' slug=item.slug %}">{{ item.title }}</a>
-                        </h3>
-                        <div class="small g-color-white-opacity-0_6">{{ item.publish_date|date }}</div>
-                    </article>
+                <!-- Footer Content -->
+                <div class="col-lg-3 col-md-6 g-mb-40 g-mb-0--lg">
+                    <div class="u-heading-v3-1 g-brd-white-opacity-0_3 g-mb-25">
+                        <h2 class="u-heading-v3__title h6 text-uppercase g-brd-primary">Последние новости</h2>
+                    </div>
 
-                    {% if not forloop.last %}
-                        <hr class="g-brd-white-opacity-0_1 g-my-10">
-                    {% endif %}
-                {% endfor %}
-            </div>
-            <!-- End Footer Content -->
+                    {% last_news as last_news %}
+                    {% for item in last_news %}
+                        <article>
+                            <h3 class="h6 g-mb-2">
+                                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="{% url 'news_detail' slug=item.slug %}">{{ item.title }}</a>
+                            </h3>
+                            <div class="small g-color-white-opacity-0_6">{{ item.publish_date|date }}</div>
+                        </article>
 
-            <!-- Footer Content -->
-            <div class="col-lg-3 col-md-6 g-mb-40 g-mb-0--lg">
-                <div class="u-heading-v3-1 g-brd-white-opacity-0_3 g-mb-25">
-                    <h2 class="u-heading-v3__title h6 text-uppercase g-brd-primary">Меню</h2>
-                </div>
-
-                <nav class="text-uppercase1">
-                    <ul class="list-unstyled g-mt-minus-10 mb-0">
-                        <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
-                            <h4 class="h6 g-pr-20 mb-0">
-                                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="{% url 'about' %}">О нас</a>
-                                <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
-                            </h4>
-                        </li>
-                        <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
-                            <h4 class="h6 g-pr-20 mb-0">
-                                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="{% url 'news_list' %}">Новости</a>
-                                <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
-                            </h4>
-                        </li>
-                        <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
-                            <h4 class="h6 g-pr-20 mb-0">
-                                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="{% url 'play' %}">Спектакль "В гостях у Ивана"</a>
-                                <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
-                            </h4>
-                        </li>
-                        <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
-                            <h4 class="h6 g-pr-20 mb-0">
-                                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="{% url 'calendar_event_list' %}">Календарь</a>
-                                <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
-                            </h4>
-                        </li>
-                        <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
-                            <h4 class="h6 g-pr-20 mb-0">
-                                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="{% url 'photo_archive' %}">Фотоархив</a>
-                                <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
-                            </h4>
-                        </li>
-                        <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
-                            <h4 class="h6 g-pr-20 mb-0">
-                                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="{% url 'contacts' %}">Контакты</a>
-                                <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
-                            </h4>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            <!-- End Footer Content -->
-
-            <!-- Footer Content -->
-            <div class="col-lg-3 col-md-6">
-                <div class="u-heading-v3-1 g-brd-white-opacity-0_3 g-mb-25">
-                    <h2 class="u-heading-v3__title h6 text-uppercase g-brd-primary">Связь с нами</h2>
-                </div>
-
-                {% contacts_footer as contacts_footer %}
-                <address class="g-bg-no-repeat g-line-height-2">
-                    {% for contact in contacts_footer %}
-
-                    {% endfor %}
-                    Телефон:<br>
-                    {% for contact in contacts_footer %}
-                        {% if contact.contact_type == 1 %}
-                            <i class="fa fa-phone g-mr-3"></i>
-                            <a class="g-color-white-opacity-0_7" href="tel:{{ contact.value }}">{{ contact.value }}</a><br>
+                        {% if not forloop.last %}
+                            <hr class="g-brd-white-opacity-0_1 g-my-10">
                         {% endif %}
                     {% endfor %}
-                    Email:<br>
-                    {% for contact in contacts_footer %}
-                        {% if contact.contact_type == 2 %}
-                            <i class="fa fa-envelope g-mr-3"></i>
-                            <a class="g-color-white-opacity-0_7" href="mailto:{{ contact.value }}">{{ contact.value }}</a><br>
-                        {% endif %}
-                    {% endfor %}
-                </address>
+                </div>
+                <!-- End Footer Content -->
+
+                <!-- Footer Content -->
+                <div class="col-lg-3 col-md-6 g-mb-40 g-mb-0--lg">
+                    <div class="u-heading-v3-1 g-brd-white-opacity-0_3 g-mb-25">
+                        <h2 class="u-heading-v3__title h6 text-uppercase g-brd-primary">Меню</h2>
+                    </div>
+
+                    <nav class="text-uppercase1">
+                        <ul class="list-unstyled g-mt-minus-10 mb-0">
+                            <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
+                                <h4 class="h6 g-pr-20 mb-0">
+                                    <a class="g-color-white-opacity-0_8 g-color-white--hover" href="{% url 'about' %}">О нас</a>
+                                    <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
+                                </h4>
+                            </li>
+                            <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
+                                <h4 class="h6 g-pr-20 mb-0">
+                                    <a class="g-color-white-opacity-0_8 g-color-white--hover" href="{% url 'news_list' %}">Новости</a>
+                                    <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
+                                </h4>
+                            </li>
+                            <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
+                                <h4 class="h6 g-pr-20 mb-0">
+                                    <a class="g-color-white-opacity-0_8 g-color-white--hover" href="{% url 'play' %}">Спектакль "В гостях у Ивана"</a>
+                                    <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
+                                </h4>
+                            </li>
+                            <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
+                                <h4 class="h6 g-pr-20 mb-0">
+                                    <a class="g-color-white-opacity-0_8 g-color-white--hover" href="{% url 'calendar_event_list' %}">Календарь</a>
+                                    <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
+                                </h4>
+                            </li>
+                            <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
+                                <h4 class="h6 g-pr-20 mb-0">
+                                    <a class="g-color-white-opacity-0_8 g-color-white--hover" href="{% url 'photo_archive' %}">Фотоархив</a>
+                                    <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
+                                </h4>
+                            </li>
+                            <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
+                                <h4 class="h6 g-pr-20 mb-0">
+                                    <a class="g-color-white-opacity-0_8 g-color-white--hover" href="{% url 'contacts' %}">Контакты</a>
+                                    <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
+                                </h4>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- End Footer Content -->
+
+                <!-- Footer Content -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="u-heading-v3-1 g-brd-white-opacity-0_3 g-mb-25">
+                        <h2 class="u-heading-v3__title h6 text-uppercase g-brd-primary">Связь с нами</h2>
+                    </div>
+
+                    {% contacts_footer as contacts_footer %}
+                    <address class="g-bg-no-repeat g-line-height-2">
+                        {% for contact in contacts_footer %}
+
+                        {% endfor %}
+                        Телефон:<br>
+                        {% for contact in contacts_footer %}
+                            {% if contact.contact_type == 1 %}
+                                <i class="fa fa-phone g-mr-3"></i>
+                                <a class="g-color-white-opacity-0_7" href="tel:{{ contact.value }}">{{ contact.value }}</a><br>
+                            {% endif %}
+                        {% endfor %}
+                        Email:<br>
+                        {% for contact in contacts_footer %}
+                            {% if contact.contact_type == 2 %}
+                                <i class="fa fa-envelope g-mr-3"></i>
+                                <a class="g-color-white-opacity-0_7" href="mailto:{{ contact.value }}">{{ contact.value }}</a><br>
+                            {% endif %}
+                        {% endfor %}
+                    </address>
+                </div>
+                <!-- End Footer Content -->
             </div>
-            <!-- End Footer Content -->
         </div>
     </div>
 </div>
