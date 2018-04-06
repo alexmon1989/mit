@@ -13,7 +13,7 @@ class NewsListView(ListView):
 class NewsDetailView(DetailView):
     """Отображает страницу новости."""
     model = News
-    queryset = News.objects.published()
+    queryset = News.objects.filter(is_enabled=True)
     template_name = 'news/detail/news_detail.html'
 
     def get_context_data(self, **kwargs):
