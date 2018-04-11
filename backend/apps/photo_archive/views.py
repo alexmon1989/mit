@@ -22,7 +22,7 @@ class GalleryListView(TemplateView):
         )
         context['no_photo'] = True
         for event in context['events']:
-            event['photo'] = EventPhoto.objects.filter(is_visible=True, event_id=event['pk']).first()
+            event['photo'] = EventPhoto.objects.filter(is_visible=True, for_archive=True, event_id=event['pk']).first()
             if context['no_photo'] and event['photo']:
                 context['no_photo'] = False
         return context
