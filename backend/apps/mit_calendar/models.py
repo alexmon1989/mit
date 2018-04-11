@@ -142,6 +142,11 @@ class EventPhoto(TimeStampedModel):
         help_text='Оптимальный размер: 900px*600px.'
     )
     event = models.ForeignKey(Event, on_delete=models.CASCADE, verbose_name='Мероприятие')
+    for_archive = models.BooleanField(
+        'Для фотоархива',
+        default=True,
+        help_text='Фотографии из фотоархива можно "лайкать"'
+    )
     is_visible = models.BooleanField('Включено', default=True)
 
     def __str__(self):

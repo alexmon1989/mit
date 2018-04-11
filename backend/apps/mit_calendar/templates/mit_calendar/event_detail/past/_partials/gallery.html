@@ -7,7 +7,7 @@
              data-center-padding="60px"
              data-slides-show="4"
              data-slides-scroll="4"
-             data-rows="{% if event.get_media_count > 6 %}2{% else %}1{% endif %}"
+             data-rows="{% if event.get_media_count > 20 %}4{% elif event.get_media_count > 15 %}3{% elif event.get_media_count > 6 %}2{% else %}1{% endif %}"
              data-pagi-classes="u-carousel-indicators-v1 g-absolute-centered--x g-bottom-0">
 
             {% for video in event.get_videos %}

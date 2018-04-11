@@ -42,6 +42,7 @@ def photos(request):
     except (ValueError, TypeError):
         return JsonResponse({'error': 1}, status=400)
     photos_list = EventPhoto.objects.filter(
+        for_archive=True,
         is_visible=True,
         event_id=event_id
     ).values('id', 'image').annotate(Count('like'))
