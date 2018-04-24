@@ -34,7 +34,7 @@ class HomeAdmin(SingleModelAdmin):
         }),
         ('О нас', {
             'fields': (
-                'about_title', 'about_text',
+                'about_title', 'about_under_title', 'about_text',
             )
         }),
         ('SEO опции', {

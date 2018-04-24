@@ -17,6 +17,7 @@ class Home(SeoModel, TimeStampedModel):
     icon3_title = models.CharField('Заголовок', max_length=255)
     icon3_text = models.TextField('Текст')
     about_title = models.CharField('Заголовок', max_length=255)
+    about_under_title = RichTextUploadingField('Текст под заголовком', blank=True, null=True, default='')
     about_text = RichTextUploadingField('Текст')
 
     def __str__(self):
